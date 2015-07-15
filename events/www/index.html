@@ -21,6 +21,7 @@
 
   <!-- your app's js -->
   <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
 </head>
 
 <body ng-app="starter">
@@ -29,29 +30,15 @@
         <h1 class="title">Ionic Blank Starter</h1>
       </ion-header-bar> -->
     <ion-content>
-
-
-
       <div class="row">
         <div class="col-10">
           1 pm
         </div>
-        <div class="col-90">
-          <ul class="list">
-            <li class="item">
-              Event 1
-            </li>
-            <li class="item">
-              Event 2
-            </li>
-            <li class="item">
-              Event 3
-            </li>
-            <li class="item">
-              Event 4
-            </li>
-          </ul>
-        </div>
+          <ion-list class="col-90" ng-controller="EventsCtrl">
+            <ion-item ng-repeat="event in events">
+              <p>{{ event.name }}</p>
+            </ion-item>
+          </ion-list>
       </div>
 
     </ion-content>
