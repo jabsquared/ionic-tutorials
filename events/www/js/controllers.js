@@ -1,4 +1,4 @@
-app.controller('EventsCtrl', ['$scope', function($scope){
+app.controller('EventsCtrl', ['$scope', 'event_data',function($scope){
   console.log("in controller");
   $scope.events = [
     {
