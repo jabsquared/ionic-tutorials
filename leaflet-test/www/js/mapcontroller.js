@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['leaflet-directive'])
+angular.module('starter.mapcontroller', ['leaflet-directive'])
 
 .controller("MapController", [ "$scope", function($scope){
   angular.extend($scope, {
