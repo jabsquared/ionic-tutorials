@@ -2,6 +2,7 @@
 
 .row {
   padding: 0;
+  margin: 0;
 }
 
 /* Set width of time collum */
@@ -9,11 +10,16 @@
   max-width: 5em;
 }
 
+p {
+  padding: 0;
+  margin: 0;
+}
+
 .col-10 p {
   white-space: nowrap;
   font-size: 11px;
   text-align: right;
-  padding-right: 15px;
+  padding-right: 5px;
 }
 
 /* Set padding for text in each event item */
@@ -24,4 +30,8 @@
 /* Set min height event item */
 .item-thumbnail-left, .item-thumbnail-left .item-content {
   min-height: 50px;
+}
+
+.half {
+  color: gray;
 }
