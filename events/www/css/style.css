@@ -1,4 +1,16 @@
 /* Empty. Add your own CSS if you like */
+
+.row {
+  padding: 0;
+}
+
 .col-10 {
-  max-width: 3em;
+  max-width: 5em;
+}
+
+.col-10 p {
+  white-space: nowrap;
+  font-size: 11px;
+  text-align: right;
+  padding-right: 15px;
 }
