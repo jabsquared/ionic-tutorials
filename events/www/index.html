@@ -55,8 +55,10 @@
         </div>
         <ion-list class="col-90" ng-controller="EventsCtrl" show-delete="shouldShowDelete" can-swipe="listCanSwipe">
           <ion-item ng-repeat="event in events" class="item-thumbnail-left">
+              <i class="icon ion-music-note"></i>
             <p>{{ event.name }}</p>
-            <ion-option-button class="button-positive" ng-click="set(event)"> Set Reminder
+            <ion-option-button class="button-positive" ng-click="set(event)">
+              <i class="ion-ios-alarm-outline"></i>
             </ion-option-button>
           </ion-item>
         </ion-list>

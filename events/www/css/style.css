@@ -13,15 +13,30 @@
   white-space: nowrap;
   font-size: 11px;
   text-align: right;
-  padding-right: 15px;
+  padding-right: 1em;
 }
 
 /* Set padding for text in each event item */
-.item-thumbnail-left, .item-thumbnail-left .item-content {
-  padding-left: 10px;
-}
-
 /* Set min height event item */
 .item-thumbnail-left, .item-thumbnail-left .item-content {
-  min-height: 50px;
+  padding-left: 10px;
+  min-height: 40px;
+  width: 100%;
+}
+
+.ion-music-note {
+  font-size: 2em;
+  float: left;
+  margin-right: 0.3em;
+}
+
+.ion-ios-alarm-outline{
+  font-size: 2em;
+  text-align: center;
+}
+
+.col-90 {
+    -moz-box-flex: 0;
+    flex: 0 0 90%;
+    max-width: 95%;
 }
