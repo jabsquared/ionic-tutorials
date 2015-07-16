@@ -35,11 +35,13 @@
         <div class="col-10">
           1 pm
         </div>
-          <ion-list class="col-90" ng-controller="EventsCtrl">
-            <ion-item ng-repeat="event in events">
-              <p>{{ event.name }}</p>
-            </ion-item>
-          </ion-list>
+        <ion-list class="col-90" ng-controller="EventsCtrl" show-delete="shouldShowDelete" can-swipe="listCanSwipe">
+          <ion-item ng-repeat="event in events" class="item-thumbnail-left">
+            <p>{{ event.name }}</p>
+            <ion-option-button class="button-positive" ng-click="set(event)"> Set Reminder
+            </ion-option-button>
+          </ion-item>
+        </ion-list>
       </div>
 
     </ion-content>

@@ -1,4 +1,14 @@
-/* Empty. Add your own CSS if you like */
+/* Set width of time collum */
 .col-10 {
   max-width: 3em;
+}
+
+/* Set padding for text in each event item */
+.item-thumbnail-left, .item-thumbnail-left .item-content {
+  padding-left: 10px;
+}
+
+/* Set min height event item */
+.item-thumbnail-left, .item-thumbnail-left .item-content {
+  min-height: 50px;
 }
