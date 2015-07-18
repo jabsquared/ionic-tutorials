@@ -1,5 +1,14 @@
 angular.module('starter.controllers', [])
 
+// login page controller
+.controller('LoginCtrl', function($scope){
+  $scope.data = {};
+
+  $scope.login = function() {
+    console.log('Login user: ' +  $scope.data.username + ' - PW: ' + $scope.date.password);
+  }
+})
+
 .controller('DashCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {
