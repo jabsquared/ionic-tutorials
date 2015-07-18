@@ -17,7 +17,7 @@ angular.module('starter.controllers', [])
 })
 
 // geolocation controller
-.controller('GeoCtrl', function($scope) {
+.controller('GeoCtrl', function($scope, $ionicPopup) {
   $scope.lon = "";
   $scope.lat = "";
 
@@ -27,15 +27,16 @@ angular.module('starter.controllers', [])
   //
   var onSuccess = function(position) {
     $scope.lon = position.coords.longitude;
-    $scope.lat = "test";
-    alert('Latitude: ' + position.coords.latitude + '\n' +
-      'Longitude: ' + position.coords.longitude + '\n' +
-      'Altitude: ' + position.coords.altitude + '\n' +
-      'Accuracy: ' + position.coords.accuracy + '\n' +
-      'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
-      'Heading: ' + position.coords.heading + '\n' +
-      'Speed: ' + position.coords.speed + '\n' +
-      'Timestamp: ' + position.timestamp + '\n');
+    $scope.lat = position.coords.altitude;
+    $ionicPopup.alert({title : 'Success!', template : 'Your location has been recorded.'});
+    // $ionicPopup.alert({ title : 'Location Info', template : 'Latitude: ' + position.coords.latitude + '\n' +
+    //   'Longitude: ' + position.coords.longitude + '\n' +
+    //   'Altitude: ' + position.coords.altitude + '\n' +
+    //   'Accuracy: ' + position.coords.accuracy + '\n' +
+    //   'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
+    //   'Heading: ' + position.coords.heading + '\n' +
+    //   'Speed: ' + position.coords.speed + '\n' +
+    //   'Timestamp: ' + position.timestamp + '\n'});
   };
 
   // onError Callback receives a PositionError object
