@@ -27,7 +27,7 @@ angular.module('starter.controllers', [])
   //
   var onSuccess = function(position) {
     $scope.lon = position.coords.longitude;
-    $scope.lat = position.coords.altitude;
+    $scope.lat = position.coords.latitude;
     $ionicPopup.alert({title : 'Success!', template : 'Your location has been recorded.'});
     // $ionicPopup.alert({ title : 'Location Info', template : 'Latitude: ' + position.coords.latitude + '\n' +
     //   'Longitude: ' + position.coords.longitude + '\n' +
