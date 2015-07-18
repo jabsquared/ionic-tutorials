@@ -20,7 +20,7 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
         message: "Bogdan is a boss",
         title: "bow down peseant",
         text: 'TESTEST',
-        at: _5SecondsFromNow;
+        at: _5SecondsFromNow,
         autoCancel: true,
         sound: null
       }).then(function() {
