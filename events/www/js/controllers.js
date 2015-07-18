@@ -1,25 +1,47 @@
-app.controller('EventsCtrl', ['$scope', 'event_data', function($scope, event_data,  $cordovaLocalNotification){
+app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlatform', '$ionicPopup', 'event_data', function($scope, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, event_data) {
   console.log("in controller");
   $scope.events = event_data;
   $scope.shouldShowDelete = false;
   $scope.listCanSwipe = true
 
-  //Local Notification Shit
-  $scope.add = function() {
-        // create var for current time
-        var alarmTime = new Date();
-        // trigger notification 1 minute after activated
-        alarmTime.setMinutes(alarmTime.getMinutes() + 1);
-        // create notification
-        $cordovaLocalNotification.add({
-            id: "1234",
-            date: alarmTime,
-            message: "This is a message",
-            title: "This is a title",
-            autoCancel: true,
-            sound: null
-        }).then(function () {
-            console.log("The notification has been set");
+  $ionicPlatform.ready(function() {
+    //Local Notification Shit
+    $scope.add = function() {
+      console.log("entered add function");
+      // create var for current time
+      var alarmTime = new Date();
+      // trigger notification 1 minute after activated
+      alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+      // create notification
+      $cordovaLocalNotification.schedule({
+        id: "1234",
+        // set execution time
+        date: alarmTime,
+        message: "Bogdan is a boss",
+        title: "bow down peseant",
+        autoCancel: true,
+        sound: null
+      }).then(function() {
+        console.log("The notification has been set");
+      });
+
+      // An alert dialog
+    (function() {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Alert has been set!',
+          template: 'Thank you!'
         });
-    };
+        alertPopup.then(function(res) {
+          console.log('Thank you for not eating my delicious ice cream cone');
+        });
+      })();
+
+    }
+
+    $scope.$on("$cordovaLocalNotification:added", function(id, state, json) {
+      alert("Added a notification");
+    });
+
+  });
+
 }]);

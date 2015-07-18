@@ -5,15 +5,25 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('starter', ['ionic', 'ngCordova']);
 
-app.run(function($ionicPlatform) {
+app.run(function($ionicPlatform, $rootScope, $timeout) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-    if(window.cordova && window.cordova.plugins.Keyboard) {
+    if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
-    if(window.StatusBar) {
+    if (window.StatusBar) {
       StatusBar.styleDefault();
     }
+    window.plugin.notification.local.onadd = function(id, state, json) {
+      var notification = {
+        id: id,
+        state: state,
+        json: json
+      };
+      $timeout(function() {
+        $rootScope.$broadcast("$cordovaLocalNotification:added", notification);
+      });
+    };
   });
 });
