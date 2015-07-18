@@ -1,15 +1,12 @@
 app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlatform', '$ionicPopup', 'event_data', function($scope, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, event_data) {
   console.log("in controller");
+
   $scope.events = event_data;
   $scope.shouldShowDelete = false;
   $scope.listCanSwipe = true
 
   $ionicPlatform.ready(function() {
     //Local Notification Shit
-
-    $scope.showAlert = function(title, body) {
-
-    };
 
     $scope.add = function() {
       console.log("entered add function");

@@ -35,7 +35,7 @@
       </ion-header-bar> -->
     <ion-content>
       <div class="row">
-        <div class="col-10">
+        <div class="col-20">
           <p>7:00 am</p>
           <p><span class="half">7:30 am</span></p>
           <p>8:00 am</p>
@@ -56,15 +56,18 @@
           <p><span class="half">3:30 pm</span></p>
           <p>4:00 pm</p>
         </div>
-        <ion-list class="col-90" ng-controller="EventsCtrl" show-delete="shouldShowDelete" can-swipe="listCanSwipe">
-          <ion-item ng-repeat="event in events" class="item-thumbnail-left">
+        <div class="col-80">
+          <ion-list ng-controller="EventsCtrl" show-delete="shouldShowDelete" can-swipe="listCanSwipe">
+            <ion-item ng-repeat="event in events" class="item-thumbnail-left">
               <i class="icon ion-music-note"></i>
-            <p>{{ event.name }}</p>
-            <ion-option-button class="button-positive" ng-click="add()">
-              <i class="ion-ios-alarm-outline"></i>
-            </ion-option-button>
-          </ion-item>
-        </ion-list>
+              <p>{{ event.name }}</p>
+
+              <ion-option-button class="button-positive item-icon-right" ng-click="add()">
+                <i class="ion-ios-alarm-outline"></i>
+              </ion-option-button>
+            </ion-item>
+          </ion-list>
+        </div>
       </div>
 
     </ion-content>
