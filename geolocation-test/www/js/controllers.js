@@ -46,8 +46,10 @@ angular.module('starter.controllers', [])
       'message: ' + error.message + '\n');
   }
 
+  var options = { enableHighAccuracy: true };
+
   $scope.GetLocation = function() {
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
   }
 
 })
