@@ -6,7 +6,7 @@ angular.module('starter.controllers', [])
 
   $scope.login = function() {
     LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
-      $state.go('tab.dash');
+      $state.go('geolocation');
     }).error(function(data) {
       var alertPopup = $ionicPopup.alert({
         title: 'Login failed!',
@@ -14,6 +14,41 @@ angular.module('starter.controllers', [])
       });
     });
   }
+})
+
+// geolocation controller
+.controller('GeoCtrl', function($scope) {
+  $scope.lon = "";
+  $scope.lat = "";
+
+  // onSuccess Callback
+  // This method accepts a Position object, which contains the
+  // current GPS coordinates
+  //
+  var onSuccess = function(position) {
+    $scope.lon = position.coords.longitude;
+    $scope.lat = "test";
+    alert('Latitude: ' + position.coords.latitude + '\n' +
+      'Longitude: ' + position.coords.longitude + '\n' +
+      'Altitude: ' + position.coords.altitude + '\n' +
+      'Accuracy: ' + position.coords.accuracy + '\n' +
+      'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '\n' +
+      'Heading: ' + position.coords.heading + '\n' +
+      'Speed: ' + position.coords.speed + '\n' +
+      'Timestamp: ' + position.timestamp + '\n');
+  };
+
+  // onError Callback receives a PositionError object
+  //
+  function onError(error) {
+    alert('code: ' + error.code + '\n' +
+      'message: ' + error.message + '\n');
+  }
+
+  $scope.GetLocation = function() {
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+  }
+
 })
 
 .controller('DashCtrl', function($scope) {})

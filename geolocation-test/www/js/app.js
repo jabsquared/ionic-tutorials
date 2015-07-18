@@ -38,6 +38,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     controller: 'LoginCtrl'
   })
 
+  // setup state for login page
+  .state('geolocation', {
+    url: '/geolocation',
+    templateUrl: 'templates/geo-tracking.html',
+    controller: 'GeoCtrl'
+  })
+
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
