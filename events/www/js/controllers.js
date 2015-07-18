@@ -9,16 +9,18 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
     $scope.add = function() {
       console.log("entered add function");
       // create var for current time
-      var alarmTime = new Date();
+      var now = new Date().getTime();
+      var _5SecondsFromNow = new Date(now + 5 * 1000)
       // trigger notification 1 minute after activated
-      alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+      alarmTime.setMinutes(alarmTime.getMinutes() + 0.5);
       // create notification
       $cordovaLocalNotification.schedule({
-        id: "1234",
+        id: 1234,
         // set execution time
-        date: alarmTime,
         message: "Bogdan is a boss",
         title: "bow down peseant",
+        text: 'TESTEST',
+        at: _5SecondsFromNow;
         autoCancel: true,
         sound: null
       }).then(function() {
@@ -26,7 +28,7 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
       });
 
       // An alert dialog
-    (function() {
+      (function() {
         var alertPopup = $ionicPopup.alert({
           title: 'Alert has been set!',
           template: 'Thank you!'
