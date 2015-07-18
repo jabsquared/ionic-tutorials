@@ -1,11 +1,18 @@
 angular.module('starter.controllers', [])
 
 // login page controller
-.controller('LoginCtrl', function($scope){
+.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
   $scope.data = {};
 
   $scope.login = function() {
-    console.log('Login user: ' +  $scope.data.username + ' - PW: ' + $scope.date.password);
+    LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
+      $state.go('tab.dash');
+    }).error(function(data) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Login failed!',
+        template: 'Please check your credentials!'
+      });
+    });
   }
 })
 
