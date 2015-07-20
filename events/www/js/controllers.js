@@ -3,7 +3,7 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
 
   $scope.events = event_data;
   $scope.shouldShowDelete = false;
-  $scope.listCanSwipe = true
+  $scope.listCanSwipe = true;
 
   $ionicPlatform.ready(function() {
     //Local Notification Shit

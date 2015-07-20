@@ -2,14 +2,13 @@ app.factory('event_data', function() {
   console.log('in service!');
     var events = [
       {
-        name: "event 1"
+        name      : "Event 1",
+        type      : "music",
+        start     : 7,
+        dur       : 60, // in minutes
+        desc      : "Musical event",
+
       },
-      {
-        name: "event 2"
-      },
-      {
-        name: "event 3"
-      }
     ]
     return events;
  });
