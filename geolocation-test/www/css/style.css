@@ -1,1 +1,7 @@
 /* Empty. Add your own CSS if you like */
+
+#logo {
+  margin: auto;
+  max-height: 10em;
+  margin-bottom: 2em;
+}
