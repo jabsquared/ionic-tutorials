@@ -23,7 +23,9 @@ p {
 }
 
 .ion-ios-alarm-outline{
-  font-size: 2em;
+  font-size: 2.4em;
+  margin: 0 auto;
+  font-weight: 800;
   text-align: center;
 }
 
@@ -60,17 +62,24 @@ p {
 
 .event-name {
   height: 100%;
+  clear: both;
   font-weight: 700;
   display: block;
   margin-left: 1.8em;
 }
 
 .event-desc {
-  margin-top: 0.4em;
+  margin-top: 0.2em;
   font-weight: 500;
   float: left;
-  max-width: 200px;
+  max-width: 230px;
   height: 100%;
+}
+
+.event-desc p {
+  padding-top: 0.6em;
+  white-space: normal;
+  color: gray;
 }
 
 .event-body {
