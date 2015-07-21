@@ -97,15 +97,16 @@ angular.module('starter.mapcontroller', ['leaflet-directive'])
   };
 
   angular.extend($scope, {
-
+    tiles: {
+      url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    },
     defaults: {
-        tileLayer: "http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png",
-        minZoom: 16,
-        path: {
-            weight: 10,
-            color: '#800000',
-            opacity: 1
-        }
+      // tileLayer: "http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png",
+      minZoom: 16,
+      path: {
+        weight: 9,
+        opacity: 1
+      }
     },
     maxbounds: $scope.regions.london,
     center: {
