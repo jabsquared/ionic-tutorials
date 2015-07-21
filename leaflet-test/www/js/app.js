@@ -40,46 +40,46 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','s
 
   // Each tab has its own nav history stack:
 
-  .state('tab.map', {
-    url: '/map',
+  .state('tab.marker-test', {
+    url: '/marker-test',
     views: {
-      'tab-map': {
-        templateUrl: 'templates/map.html',
-        controller: 'MapController'
+      'tab-marker-test': {
+        templateUrl: 'templates/marker-test.html',
+        controller: 'MarkerTestCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.static-map', {
+      url: '/static-map',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-static-map': {
+          templateUrl: 'templates/static-map.html',
+          controller: 'StaticMapCrtl'
         }
       }
     })
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.geojson-test', {
+    url: '/geojson-test',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-geojson-test': {
+        templateUrl: 'templates/geojson-test.html',
+        controller: 'GeoJsonCtrl'
+      }
+    }
+  })
+  .state('tab.boundary-test', {
+    url: '/boundary-test',
+    views: {
+      'tab-boundary-test': {
+        templateUrl: 'templates/boundary-test.html',
+        controller: 'BoundaryTestCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/map');
+  $urlRouterProvider.otherwise('/tab/marker-test');
 
 });
