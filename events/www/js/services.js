@@ -29,5 +29,20 @@ app.factory('event_data', function() {
         type      : "music"
       }
     ]
-    return events;
+    return {
+      all: function() {
+        return events;
+      },
+      remove: function(events) {
+        events.splice(events.indexOf(event), 1);
+      },
+      get: function(id) {
+        for (var i = 0; i < events.length; i++) {
+          if (events[i].id === parseInt(id)) {
+            return events[i];
+          }
+        }
+        return null;
+      }
+    };
  });

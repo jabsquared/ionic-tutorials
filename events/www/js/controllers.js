@@ -1,7 +1,7 @@
 app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlatform', '$ionicPopup', 'event_data', function($scope, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, event_data) {
   console.log("in controller");
 
-  $scope.events = event_data;
+  $scope.events = event_data.all();
   $scope.shouldShowDelete = false;
   $scope.listCanSwipe = true;
 
@@ -90,4 +90,8 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
     alert("Added a notification");
   });
 
+}])
+
+app.controller('EventCtrl', ['$scope', '$stateParams', 'event_data', function($scope, $stateParams, event_data) {
+  $scope.event = event_data.get($stateParams.id);
 }]);

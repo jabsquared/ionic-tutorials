@@ -28,3 +28,23 @@ app.run(function($ionicPlatform, $rootScope, $timeout) {
     };
   });
 });
+
+app.config(function($stateProvider, $urlRouterProvider) {
+
+  $stateProvider
+  // setup state for login page
+    .state('schedule', {
+    url: '/schedule',
+    templateUrl: 'templates/schedule.html',
+    controller: 'EventsCtrl'
+  })
+
+  .state('event', {
+    url: '/event/:id',
+    templateUrl: 'templates/event.html',
+    controller: 'EventCtrl'
+  });
+
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/schedule');
+});

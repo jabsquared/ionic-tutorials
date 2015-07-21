@@ -34,43 +34,10 @@
 </head>
 
 <body ng-app="starter">
-  <ion-pane>
     <!-- <ion-header-bar class="bar-stable">
         <h1 class="title">Ionic Blank Starter</h1>
       </ion-header-bar> -->
-    <ion-content>
-      <ion-list ng-controller="EventsCtrl" show-delete="shouldShowDelete" can-swipe="listCanSwipe">
-        <ion-item ng-repeat="event in events" class="item item-icon-left item-icon-right">
-          <div class="event-body" ng-style="{'height' : (30 + 2 * event.dur)+'px'}">
-
-            <i class="icon button button-positive badge event-time" ng-click="schedule({{event}})">
-              <p>
-                {{event.start | date:'h:mm'}}
-              <br>
-                {{event.start | date:'a' | lowercase}}
-              </p>
-            </i>
-
-            <span class="event-name">
-              {{event.name}}
-              <span class="item-note event-desc">
-                <p>
-                 {{event.desc}}
-                </p>
-              </span>
-            </span>
-
-            <!-- <i class="event-icon icon ion-music-note"></i> -->
-
-            <ion-option-button class="button-positive item-icon-right" ng-click="schedule({{event}})">
-              <i class="ion-ios-alarm-outline"></i>
-            </ion-option-button>
-
-          </div>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-pane>
+      <ion-nav-view></ion-nav-view>
 </body>
 
 </html>
