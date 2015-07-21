@@ -5,11 +5,9 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
   $scope.shouldShowDelete = false;
   $scope.listCanSwipe = true;
 
-  $scope.foo = 0;
-
   //Local Notification Shit
 
-  $scope.test = function() {
+  $scope.schedule = function() {
     // prompt user for reminder options
     var alarmPopup = $ionicPopup.show({
       title: "Set Reminder",
@@ -35,6 +33,7 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
         type: 'button-positive',
         onTap: function(e) {
           // Returning a value will cause the promise to resolve with the given value.
+          // add(15);
           return 30;
         }
       }]
@@ -42,9 +41,6 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
     console.log("alarmPopup:");
     console.log(alarmPopup);
   }
-
-  console.log("foo:");
-  console.log($scope.foo);
 
   function add(sec) {
     console.log("entered add function");
