@@ -16,37 +16,26 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
     // alarmTime.setMinutes(alarmTime.getMinutes() + 0.5);
     // create notification
 
-    // window.plugin.notification.local.add({
-    //   id: "1234", // A unique id of the notifiction
-    //   title: "Victory", // The title of the message
-    //   message: "It Works!", // The message that is displayed
-    //   date: _5SecondsFromNow // This expects a date object
-    // });
-
     $cordovaLocalNotification.schedule({
-      id: 22,
-      title: 'test',
-      text: 'works!',
-      at: _5SecondsFromNow
+    id: 1,
+    title: 'Event About to Start!',
+      text: 'Louis is speaking in 15 minutes.',
+      at: _5SecondsFromNow,
+      icon: 'file://img/logo.png',
+      smallIcon: 'file://img/logo.png',
+      led: 'FBA50A',
+      badge: 1
     }).then(function() {
-      var alertPopup = $ionicPopup.alert({
-        title: "Alert has been Set",
-        template: "Thanks!"
-      });
+    var alertPopup = $ionicPopup.alert({
+      title: "Alert has been Set",
+      template: "Thanks!"
+    });
       alertPopup.then(function(res) {});
     });
+}
 
-  }
-
-  // window.plugin.notification.local.onadd = function(id, state, json) {
-  //   var alertPopup = $ionicPopup.alert({
-  //       title: "Alert has been Set",
-  //       template: "Thanks!"
-  //     });
-  // };
-
-  $scope.$on("$cordovaLocalNotification:added", function(id, state, json) {
-    alert("Added a notification");
-  });
+$scope.$on("$cordovaLocalNotification:added", function(id, state, json) {
+alert("Added a notification");
+});
 
 }]);
