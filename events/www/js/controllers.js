@@ -22,7 +22,7 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
       text: 'Louis is speaking in 15 minutes.',
       at: _5SecondsFromNow,
       icon: 'file://img/logo.png',
-      smallIcon: 'file://img/logo.png',
+      smallIcon: 'file://img/small.png',
       led: 'FBA50A',
       badge: 1
     }).then(function() {
