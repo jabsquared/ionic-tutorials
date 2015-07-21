@@ -69,6 +69,7 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
 
   $scope.$on("$cordovaLocalNotification:added", function(id, state, json) {
     alert("Added a notification");
+    navigator.notification.vibrate(2000);
   });
 
 }]);
