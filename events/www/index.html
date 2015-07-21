@@ -41,16 +41,23 @@
     <ion-content>
       <ion-list ng-controller="EventsCtrl" show-delete="shouldShowDelete" can-swipe="listCanSwipe">
         <ion-item ng-repeat="event in events" class="item item-icon-left item-icon-right">
-          <div class="" ng-style="{'height' : (30 + 2 * event.dur)+'px'}">
+          <div class="event-body" ng-style="{'height' : (30 + 2 * event.dur)+'px'}">
 
-            <i class="icon button button-positive badge">
-              {{event.start}}
+            <i class="icon button button-positive badge event-time">
+              <p>
+                {{event.start}}
+              </p>
             </i>
-            <h2>{{event.name}}</h2>
 
-            <span class="item-note">
-              {{event.desc}}
-            </span>
+            <div class="event-name">
+              {{event.name}}
+              <span class="item-note event-desc">
+                <p>
+                  {{event.desc}}
+                </p>
+              </span>
+            </div>
+
 
             <i class="event-icon icon ion-music-note"></i>
 

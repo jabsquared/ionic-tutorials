@@ -2,25 +2,28 @@ app.factory('event_data', function() {
   console.log('in service!');
     var events = [
       {
-        name      : "Event 1",
+        name      : "Jay-Z Performance",
         type      : "music",
-        start     : 7,
+        start     : '9 am',
         dur       : 30, // in minutes
-        desc      : "Musical event",
+        desc      : "Jay-Z performs hits from his newest album... Purple Fish.",
+        type      : "music"
       },
       {
-        name      : "Event 2",
+        name      : "What is the meaning of life?",
         type      : "speech",
-        start     : 2,
+        start     : '11 am',
         dur       : 60, // in minutes
-        desc      : "Speaker",
+        desc      : "Bogdan Talks About Life.",
+        type      : "talk"
       },
       {
-        name      : "Event 3",
+        name      : "Louis & Friends",
         type      : "music",
-        start     : 6,
+        start     : '2 pm',
         dur       : 20, // in minutes
         desc      : "Louis and the Amigos",
+        type      : "music"
       }
     ]
     return events;

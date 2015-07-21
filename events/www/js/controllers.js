@@ -17,8 +17,8 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
     // create notification
 
     $cordovaLocalNotification.schedule({
-    id: 1,
-    title: 'Event About to Start!',
+      id: 1,
+      title: 'Event About to Start!',
       text: 'Louis is speaking in 15 minutes.',
       at: _5SecondsFromNow,
       icon: 'file://img/logo.png',
@@ -26,16 +26,16 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
       led: 'FBA50A',
       badge: 1
     }).then(function() {
-    var alertPopup = $ionicPopup.alert({
-      title: "Alert has been Set",
-      template: "Thanks!"
-    });
+      var alertPopup = $ionicPopup.alert({
+        title: "Alert has been Set",
+        template: "Thanks!"
+      });
       alertPopup.then(function(res) {});
     });
-}
+  }
 
-$scope.$on("$cordovaLocalNotification:added", function(id, state, json) {
-alert("Added a notification");
-});
+  $scope.$on("$cordovaLocalNotification:added", function(id, state, json) {
+    alert("Added a notification");
+  });
 
 }]);

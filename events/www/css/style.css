@@ -1,22 +1,11 @@
 /* Empty. Add your own CSS if you like */
 
-.row {
-  padding: 0;
-  margin: 0;
-}
 
 /* Set width of time collum */
 
 p {
   padding: 0;
   margin: 0;
-}
-
-.col-20 p {
-  white-space: nowrap;
-  font-size: 10px;
-  text-align: right;
-  padding-right: 1em;
 }
 
 /* Set padding for text in each event item */
@@ -38,13 +27,6 @@ p {
   text-align: center;
 }
 
-.col-90 {
-    -moz-box-flex: 0;
-    flex: 0 0 90%;
-    max-width: 90vw;
-    margin-left: 0;
-}
-
 .half {
   color: gray;
 }
@@ -59,3 +41,39 @@ p {
 /*.item {
   height: 60px;
 }*/
+
+.event-time {
+  width: 2.6em;
+}
+
+.event-time i {
+
+}
+
+.event-time p {
+  color: #fff;
+  font-size: 0.6em;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.event-name {
+  height: 100%;
+  font-weight: 700;
+  display: block;
+  margin-left: 2.5em;
+}
+
+.event-desc {
+  margin-top: 0.4em;
+  font-weight: 500;
+  float: left;
+  max-width: 200px;
+  height: 100%;
+}
+
+.event-body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
