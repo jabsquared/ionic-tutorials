@@ -45,7 +45,8 @@ p {
 }*/
 
 .event-time {
-  width: 2.2em;
+  width: 2em;
+  border-radius: 0px;
 }
 
 .event-time i {
@@ -72,14 +73,16 @@ p {
   margin-top: 0.2em;
   font-weight: 500;
   float: left;
-  max-width: 230px;
+  width: 19.3em;
   height: 100%;
+  margin-bottom: .9em;
 }
 
 .event-desc p {
   padding-top: 0.6em;
   white-space: normal;
   color: gray;
+  overflow: hidden;
 }
 
 .event-body {

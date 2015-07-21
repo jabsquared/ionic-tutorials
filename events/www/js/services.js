@@ -7,7 +7,7 @@ app.factory('event_data', function() {
         type      : "music",
         start     : new Date(2015, 6, 21, 2, 50),
         dur       : 30, // in minutes
-        desc      : "Jay-Z performs hits from his newest album... Purple Fish.",
+        desc      : "Jay-Z performs hits from his newest album Purple Fish. Testing test test. Testing test test. Testing test test.",
         type      : "music"
       },
       {
