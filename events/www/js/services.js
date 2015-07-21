@@ -5,7 +5,7 @@ app.factory('event_data', function() {
         id        : 1,
         name      : "Jay-Z Performance",
         type      : "music",
-        start     : '9 am',
+        start     : new Date(2015, 7, 21, 12, 30),
         dur       : 30, // in minutes
         desc      : "Jay-Z performs hits from his newest album... Purple Fish.",
         type      : "music"
@@ -14,7 +14,7 @@ app.factory('event_data', function() {
         id        : 2,
         name      : "What is the meaning of life?",
         type      : "speech",
-        start     : '11 am',
+        start     : new Date(2015, 7, 21, 16, 30),
         dur       : 50, // in minutes
         desc      : "Bogdan Talks About Life.",
         type      : "talk"
@@ -23,7 +23,7 @@ app.factory('event_data', function() {
         id        : 3,
         name      : "Louis & Friends",
         type      : "music",
-        start     : '2 pm',
+        start     : new Date(2015, 7, 21, 9, 30),
         dur       : 20, // in minutes
         desc      : "Louis and the Amigos",
         type      : "music"

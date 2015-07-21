@@ -45,7 +45,7 @@
 
             <i class="icon button button-positive badge event-time" ng-click="schedule({{event.id}})">
               <p>
-                {{event.start}}
+                {{event.start | date:'h a' | lowercase}}
               </p>
             </i>
 
