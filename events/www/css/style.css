@@ -43,7 +43,7 @@ p {
 }*/
 
 .event-time {
-  width: 2.6em;
+  width: 2.2em;
 }
 
 .event-time i {
@@ -55,13 +55,14 @@ p {
   font-size: 0.6em;
   text-align: center;
   margin: 0 auto;
+  line-height: 22px;
 }
 
 .event-name {
   height: 100%;
   font-weight: 700;
   display: block;
-  margin-left: 2.5em;
+  margin-left: 1.8em;
 }
 
 .event-desc {
