@@ -54,6 +54,7 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
       title: 'Event About to Start!',
       text: 'Louis is speaking in 15 minutes.',
       at: _5SecondsFromNow,
+      sound: null,
       icon: 'file://img/logo.png',
       smallIcon: 'file://img/small.png',
       led: 'FBA50A',
