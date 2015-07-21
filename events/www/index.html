@@ -35,8 +35,8 @@
       </ion-header-bar> -->
     <ion-content>
       <ion-list ng-controller="EventsCtrl" show-delete="shouldShowDelete" can-swipe="listCanSwipe">
-        <ion-item ng-repeat="event in events" class="item item-icon-left item-icon-right">
-          <i class="icon button button-positive badge">
+        <ion-item ng-repeat="event in events" class="item item-icon-left item-icon-right" ng-style="{'height' : (30 + 2 * event.dur)+'px'}">
+          <i class="icon button button-positive badge" ng-style="{'height' : (30 + 2 * event.dur)+'px'}">
             {{event.start}}
           </i>
           <h2>{{event.name}}</h2>
