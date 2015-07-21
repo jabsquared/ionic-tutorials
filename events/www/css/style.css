@@ -53,6 +53,9 @@ p {
   left:0px;
 }
 
-.item {
-  height: 60px;
+.item-complex .item-content, .item-radio .item-content {
+  padding: 10px 49px 10px 16px;
 }
+/*.item {
+  height: 60px;
+}*/
