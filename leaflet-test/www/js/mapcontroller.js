@@ -94,11 +94,25 @@ angular.module('starter.mapcontroller', ['leaflet-directive'])
         lng: 21.233139038085938
       }
     },
-    maxZoom:12
   };
 
   angular.extend($scope, {
-    maxbounds: $scope.regions.london
+
+    defaults: {
+        tileLayer: "http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png",
+        minZoom: 16,
+        path: {
+            weight: 10,
+            color: '#800000',
+            opacity: 1
+        }
+    },
+    maxbounds: $scope.regions.london,
+    center: {
+      lat: $scope.regions.london.northEast.lat,
+      lng: $scope.regions.london.northEast.lng,
+      zoom: 16,
+    }
   });
 
 }]);
