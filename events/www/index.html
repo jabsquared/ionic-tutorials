@@ -35,21 +35,25 @@
       </ion-header-bar> -->
     <ion-content>
       <ion-list ng-controller="EventsCtrl" show-delete="shouldShowDelete" can-swipe="listCanSwipe">
-        <ion-item ng-repeat="event in events" class="item item-icon-left item-icon-right" ng-style="{'height' : (30 + 2 * event.dur)+'px'}">
-          <i class="icon button button-positive badge" ng-style="{'height' : (30 + 2 * event.dur)+'px'}">
-            {{event.start}}
-          </i>
-          <h2>{{event.name}}</h2>
+        <ion-item ng-repeat="event in events" class="item item-icon-left item-icon-right">
+          <div class="" ng-style="{'height' : (30 + 2 * event.dur)+'px'}">
 
-          <span class="item-note">
-            {{event.desc}}
-          </span>
+            <i class="icon button button-positive badge">
+              {{event.start}}
+            </i>
+            <h2>{{event.name}}</h2>
 
-          <i class="event-icon icon ion-music-note"></i>
+            <span class="item-note">
+              {{event.desc}}
+            </span>
 
-          <ion-option-button class="button-positive item-icon-right" ng-click="add()">
-            <i class="ion-ios-alarm-outline"></i>
-          </ion-option-button>
+            <i class="event-icon icon ion-music-note"></i>
+
+            <ion-option-button class="button-positive item-icon-right" ng-click="add()">
+              <i class="ion-ios-alarm-outline"></i>
+            </ion-option-button>
+
+          </div>
         </ion-item>
       </ion-list>
     </ion-content>
