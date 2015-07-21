@@ -7,25 +7,27 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
 
   //Local Notification Shit
 
-  $scope.schedule = function(id) {
+  $scope.schedule = function(id, date_obj) {
+    console.log("date passed in: ");
+    console.log(date_obj);
     // prompt user for reminder options
     var alarmPopup = $ionicPopup.show({
       title: "Set Reminder",
       // template: "",
       buttons: [{ // Array[Object] (optional). Buttons to place in the popup footer.
-        text: '10 min',
+        text: '2 min',
         type: 'button-calm',
         onTap: function(e) {
           // Returning a value will cause the promise to resolve with the given value.
-          add(5, id);
+          add(2, id, date_obj);
           return 10;
         }
       }, {
-        text: '15 min',
+        text: '5 min',
         type: 'button-positive',
         onTap: function(e) {
           // Returning a value will cause the promise to resolve with the given value.
-          add(10, id);
+          add(5, id, date_obj);
           return 15;
         }
       }, {
@@ -43,18 +45,26 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
     console.log(alarmPopup);
   }
 
-  function add(sec, id) {
+  function add(minutes, id, date_obj) {
     console.log("entered add function");
 
     // create var for current time
-    var now = new Date().getTime();
-    var _5SecondsFromNow = new Date(now + sec * 1000);
+    // var now = new Date().getTime();
+    // var _5SecondsFromNow = new Date(now + sec * 1000);
+
+    var newDate = subtractMinutes(date_obj, minutes);
+
+    function subtractMinutes(date_obj, minutes) {
+      // converts date string back into date object
+      var newobj = new Date(date_obj).getTime();
+      return new Date(newobj - minutes * 60000);
+    }
 
     $cordovaLocalNotification.schedule({
       id: id,
       title: 'Event About to Start!',
       text: 'Louis is speaking in 15 minutes.',
-      at: _5SecondsFromNow,
+      at: newDate,
       sound: null,
       icon: 'file://img/logo.png',
       smallIcon: 'file://img/small.png',

@@ -43,9 +43,9 @@
         <ion-item ng-repeat="event in events" class="item item-icon-left item-icon-right">
           <div class="event-body" ng-style="{'height' : (30 + 2 * event.dur)+'px'}">
 
-            <i class="icon button button-positive badge event-time" ng-click="schedule({{event.id}})">
+            <i class="icon button button-positive badge event-time" ng-click="schedule({{event.id}}, {{event.start}})">
               <p>
-                {{event.start | date:'h a' | lowercase}}
+                {{event.start | date:'h:mm a' | lowercase}}
               </p>
             </i>
 
@@ -60,7 +60,7 @@
 
             <i class="event-icon icon ion-music-note"></i>
 
-            <ion-option-button class="button-positive item-icon-right" ng-click="schedule({{event.id}})">
+            <ion-option-button class="button-positive item-icon-right" ng-click="schedule({{event.id}}, {{event.start}})">
               <i class="ion-ios-alarm-outline"></i>
             </ion-option-button>
 
