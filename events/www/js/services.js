@@ -2,6 +2,7 @@ app.factory('event_data', function() {
   console.log('in service!');
     var events = [
       {
+        id        : 1,
         name      : "Jay-Z Performance",
         type      : "music",
         start     : '9 am',
@@ -10,14 +11,16 @@ app.factory('event_data', function() {
         type      : "music"
       },
       {
+        id        : 2,
         name      : "What is the meaning of life?",
         type      : "speech",
         start     : '11 am',
-        dur       : 60, // in minutes
+        dur       : 50, // in minutes
         desc      : "Bogdan Talks About Life.",
         type      : "talk"
       },
       {
+        id        : 3,
         name      : "Louis & Friends",
         type      : "music",
         start     : '2 pm',

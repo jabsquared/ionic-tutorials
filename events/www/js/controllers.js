@@ -7,17 +7,17 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
 
   //Local Notification Shit
 
-  $scope.schedule = function() {
+  $scope.schedule = function(id) {
     // prompt user for reminder options
     var alarmPopup = $ionicPopup.show({
       title: "Set Reminder",
       // template: "",
       buttons: [{ // Array[Object] (optional). Buttons to place in the popup footer.
         text: '10 min',
-        type: 'button-default',
+        type: 'button-calm',
         onTap: function(e) {
           // Returning a value will cause the promise to resolve with the given value.
-          add(5);
+          add(5, id);
           return 10;
         }
       }, {
@@ -25,15 +25,16 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
         type: 'button-positive',
         onTap: function(e) {
           // Returning a value will cause the promise to resolve with the given value.
-          add(10);
+          add(10, id);
           return 15;
         }
       }, {
         text: '30 min',
-        type: 'button-positive',
+        type: 'button-royal',
         onTap: function(e) {
           // Returning a value will cause the promise to resolve with the given value.
-          // add(15);
+          // add(15, id);
+          console.log(id);
           return 30;
         }
       }]
@@ -42,7 +43,7 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
     console.log(alarmPopup);
   }
 
-  function add(sec) {
+  function add(sec, id) {
     console.log("entered add function");
 
     // create var for current time
@@ -50,7 +51,7 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
     var _5SecondsFromNow = new Date(now + sec * 1000);
 
     $cordovaLocalNotification.schedule({
-      id: 1,
+      id: id,
       title: 'Event About to Start!',
       text: 'Louis is speaking in 15 minutes.',
       at: _5SecondsFromNow,
@@ -70,7 +71,6 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
 
   $scope.$on("$cordovaLocalNotification:added", function(id, state, json) {
     alert("Added a notification");
-    navigator.notification.vibrate(2000);
   });
 
 }]);
