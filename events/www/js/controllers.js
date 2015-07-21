@@ -14,8 +14,9 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
     var alarmPopup = $ionicPopup.show({
       title: "Set Reminder",
       // template: "",
+      cssClass: 'oneline',
       buttons: [{ // Array[Object] (optional). Buttons to place in the popup footer.
-        text: '5<br>min',
+        text: '5 minutes',
         type: 'button-calm',
         onTap: function(e) {
           // Returning a value will cause the promise to resolve with the given value.
@@ -23,7 +24,7 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
           return 10;
         }
       }, {
-        text: '10<br>min',
+        text: '10 minutes',
         type: 'button-positive',
         onTap: function(e) {
           // Returning a value will cause the promise to resolve with the given value.
@@ -31,12 +32,20 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
           return 15;
         }
       }, {
-        text: '15<br>min',
+        text: '15 minutes',
         type: 'button-royal',
         onTap: function(e) {
           // Returning a value will cause the promise to resolve with the given value.
           add(15, single_event);
           return 30;
+        }
+      }, {
+        text: 'Cancel',
+        type: 'button-assertive',
+        cssClass: 'oneline',
+        onTap: function(e) {
+          // Returning a value will cause the promise to resolve with the given value.
+          return;
         }
       }]
     });

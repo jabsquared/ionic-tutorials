@@ -73,7 +73,7 @@ p {
   margin-top: 0.2em;
   font-weight: 500;
   float: left;
-  width: 19.3em;
+  width: 18em;
   height: 100%;
   margin-bottom: .9em;
 }
@@ -88,5 +88,27 @@ p {
 .event-body {
   margin: 0;
   padding: 0;
+  width: 100%;
+}
+
+/* Popup button styling */
+
+.oneline .popup{
+width: 70%;
+}
+
+.oneline .popup-body{
+  text-align: center;
+}
+
+.oneline .popup .popup-buttons{
+  display: inline-block;
+  /*width: 100%;
+  margin: 0 auto;
+  text-align: center;*/
+}
+
+.oneline .popup .popup-buttons .button{
+  margin-bottom: .4em;
   width: 100%;
 }
