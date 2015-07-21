@@ -1,7 +1,18 @@
 /* Empty. Add your own CSS if you like */
 
+/* Header */
 
-/* Set width of time collum */
+ion-header-bar {
+  height: 80px;
+}
+
+#logo-img {
+  width: fixed;
+  max-width: 180px;
+  height: 40px;
+  margin: 0 auto;
+  padding-bottom: .4em;
+}
 
 p {
   padding: 0;
@@ -73,7 +84,8 @@ p {
   margin-top: 0.2em;
   font-weight: 500;
   float: left;
-  width: 18em;
+  min-width: 13em;
+  max-width: 40em;
   height: 100%;
   margin-bottom: .9em;
 }
@@ -103,9 +115,6 @@ width: 70%;
 
 .oneline .popup .popup-buttons{
   display: inline-block;
-  /*width: 100%;
-  margin: 0 auto;
-  text-align: center;*/
 }
 
 .oneline .popup .popup-buttons .button{
@@ -117,4 +126,14 @@ width: 70%;
 .event-link {
   color: inherit;
   text-decoration: none;
+}
+
+/* single event page styling */
+.event-title {
+  padding-top: .4em;
+  text-align: center;
+}
+
+.event-description {
+  margin: 1.3em 1em;
 }
