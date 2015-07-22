@@ -1,4 +1,7 @@
 <ion-view name="events-view">
+  <ion-header-bar class="bar-light">
+    <img id="logo-img" src="./img/logo.png" alt="Univision" href="#/schedule" />
+  </ion-header-bar>
   <ion-content>
     <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
       <ion-item ng-repeat="event in events" class="item item-icon-left item-icon-right">
@@ -17,7 +20,7 @@
               {{event.name}}
               <span class="item-note event-desc">
                 <p>
-                  {{event.desc}}
+                  {{event.desc | limitTo : 135 : 0}} {{event.desc.length > 135 ? '...' : ''}}
                 </p>
               </span>
             </span>
