@@ -1,0 +1,23 @@
+<ion-view name="event">
+  <!-- <ion-header-bar class="bar-light">
+    <a href="#/schedule" class="button icon ion-arrow-left-b"></a>
+    <img id="logo-img" src="./img/logo.png" alt="Univision" href="#/schedule" />
+  </ion-header-bar> -->
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="ticket in tickets" class="item item-icon-left item-icon-right">
+
+        <div class="event-body" ng-style="{'height' : (30 + 2 * event.dur)+'px'}">
+
+          <i class="icon button button-positive badge event-time" ng-click="">
+            <p>
+              {{ticket.id}}
+            </p>
+          </i>
+
+
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
