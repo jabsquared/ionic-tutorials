@@ -1,1 +1,20 @@
 /* Empty. Add your own CSS if you like */
+
+.item {
+  padding: 0px;
+}
+
+.status {
+  padding: 2em 0em;
+  width: .5em;
+  display: inline;
+  float: left;
+  height: 100%;
+  background-color: gray;
+}
+
+.prod-img {
+  width: 3.8em;
+  height: 3.8em;
+  vertical-align: center;
+}
