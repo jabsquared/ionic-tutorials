@@ -1,9 +1,24 @@
-<ion-view view-title="Marker Test">
-  <ion-content class="padding">
-    <div ng-controller="MarkerTestCtrl">
-      <leaflet defaults="defaults" tiles="tiles" center="center" maxbounds="maxbounds" width="100%" height="45vh"></leaflet>
+<ion-view view-title="Marker Test" ng-controller="MarkerTestCtrl">
 
+  <ion-content class="padding" scroll="false">
+
+    <leaflet defaults="defaults" tiles="tiles" center="center" maxbounds="maxbounds" width="100%" height="45vh"></leaflet>
+    <ion-scroll direction="y">
+      <ion-list>
+        <ion-item>
+          Hello, !
+        </ion-item>
+        <ion-item>
+          Hello, !
+        </ion-item>
+        <ion-item>
+          Hello, !
+        </ion-item>
+      </ion-list>
+    </ion-scroll>
 
     </div>
+
   </ion-content>
+
 </ion-view>
