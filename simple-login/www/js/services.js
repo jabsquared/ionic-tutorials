@@ -2,11 +2,11 @@ angular.module('starter.services', [])
 
 .service('LoginService', function($q) {
     return {
-        loginUser: function(name, pw) {
+        loginUser: function(phone, pw) {
             var deferred = $q.defer();
             var promise = deferred.promise;
 
-            if (name == 'user' && pw == 'secret') {
+            if (phone == 'user' && pw == 'secret') {
                 deferred.resolve('Welcome ' + name + '!');
             } else {
                 deferred.reject('Wrong credentials.');

@@ -25,7 +25,7 @@ angular.module('starter.controllers', [])
     $scope.data = {};
 
     $scope.login = function() {
-        LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
+        LoginService.loginUser($scope.data.phone, $scope.data.password).success(function(data) {
             $state.go('tab.dash');
         }).error(function(data) {
             var alertPopup = $ionicPopup.alert({
@@ -33,6 +33,7 @@ angular.module('starter.controllers', [])
                 template: 'Please check your credentials!'
             });
         });
+        console.log(filterNum);
     }
 })
 
