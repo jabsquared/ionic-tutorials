@@ -1,0 +1,24 @@
+{
+  "author": "AngularUI Team",
+  "name": "angular-ui-uploader",
+  "homepage": "https://github.com/angular-ui/ui-uploader",
+  "main": "./dist/uploader.js",
+  "license": "MIT",
+  "dependencies": {
+    "angular": ">= 1.0.5"
+  },
+  "devDependencies": {
+    "angular-mocks": ">=1.0.5",
+    "jquery": ">=1.6"
+  },
+  "version": "1.0.0",
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.0",
+    "commit": "4a6c2492cf112202ddf386f73a70f9cd656d7310"
+  },
+  "_source": "git://github.com/angular-ui/ui-uploader.git",
+  "_target": "*",
+  "_originalSource": "angular-ui-uploader"
+}

@@ -1,0 +1,16 @@
+<ion-view name="login-view">
+  <ion-content class="padding">
+    <div class="title-image">
+      <img src="img/sears-blue.png">
+    </div>
+      <div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="Phone number" ng-model="data.phone" mask="999-999-9999">
+          </label>
+          <label class="item item-input">
+              <input type="password" placeholder="Password" ng-model="data.password">
+          </label>
+      </div>
+      <button class="button button-block button-calm" ng-click="login()">Login</button>
+  </ion-content>
+</ion-view>
