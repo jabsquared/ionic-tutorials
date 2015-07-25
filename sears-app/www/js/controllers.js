@@ -1,8 +1,8 @@
 // All of the apps controllers are located here.
 
-app.controller('TicketsCtrl', ['$scope', 'ticket_data', function($scope, ticket_data) {
-  $scope.tickets = ticket_data.all();
+app.controller('TicketsCtrl', ['$scope', 'ticketData', function($scope, ticketData) {
 
+  $scope.tickets = ticketData.all();
 
 
   $scope.color_stat = function (ticket){
