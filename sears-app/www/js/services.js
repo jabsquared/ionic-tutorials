@@ -1,20 +1,22 @@
-// app.factory('product_data', ['$http', function($http){
-//
-//   return function(prodnum) {
-//     // Simple GET request example :
-//     $http.get('https://bpshonyak-prod.apigee.net/hello-world/sears?type=details&prodnum=' + prodnum).
-//       success(function(data, status, headers, config) {
-//         console.log(data);
-//         return 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112';
-//       }).
-//       error(function(data, status, headers, config) {
-//         return '';
-//       });
-//   }
-//
-//   // return "http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112";
-//
-// }])
+app.factory('product_data', ['$http', function($http){
+
+  // return function(catagory) {
+  //   // Simple GET request example :
+  //   $http.get('https://bpshonyak-prod.apigee.net/hello-world/sears?type=searchcat&cat=' + catagory).
+  //     success(function(data, status, headers, config) {
+  //       return data;
+  //       console.log(data);
+  //     }).
+  //     error(function(data, status, headers, config) {
+  //       return data;
+  //       console.log(data);
+  //     });
+  //     console.log('done with http call!');
+  // }
+
+  return null;
+
+}])
 
 app.factory('ticketData', ['$http', function($http) {
   // console.log('in service!');
