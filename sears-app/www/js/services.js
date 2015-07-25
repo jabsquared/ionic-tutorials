@@ -39,7 +39,7 @@ app.factory('ticket_data', ['$http', function($http) {
         tech      : 'Bogdan',
         status    : 'Pending',
         prodnum   : '04649599000P',
-        img       : getinfo('04649599000P')
+        img       : ''
       },
       {
         id        : 2,
@@ -77,6 +77,18 @@ app.factory('ticket_data', ['$http', function($http) {
           }
         }
         return null;
+      },
+      newpic: function(prodnum) {
+        console.log('in newpic');
+        $http.get('https://bpshonyak-prod.apigee.net/hello-world/sears?type=details&prodnum=04649599000P').
+          success(function(data, status, headers, config) {
+            console.log('success');
+            return 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112';
+          }).
+          error(function(data, status, headers, config) {
+            return 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112';
+            console.log('failure');
+          });
       }
     };
  }]);

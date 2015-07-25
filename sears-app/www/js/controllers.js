@@ -3,7 +3,9 @@
 app.controller('TicketsCtrl', ['$scope', 'ticket_data', function($scope, ticket_data) {
   $scope.tickets = ticket_data.all();
 
-
+ $scope.addpic = function (ticket) {
+   ticket.img = ticket_data.newpic('04649599000P');
+ }
 
   $scope.color_stat = function (ticket){
     if (ticket.status === 'Pending') {
