@@ -35,7 +35,13 @@ app.factory('ticketData', ['$http', function($http) {
     error(function(data, status, headers, config) {
       console.log("Failure");
       console.log(url);
-    });
+    }).
+    finally(function(data){
+      console.log("Finally");
+      info =  'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112';
+    })
+    return info
+    ;
   };
 
   var tickets = [{
@@ -43,7 +49,7 @@ app.factory('ticketData', ['$http', function($http) {
     tech: 'Bogdan',
     status: 'Pending',
     prodnum: '04649599000P',
-    img: info
+    img: getinfo('04649599000P')
   }, {
     id: 2,
     tech: 'Louis',
