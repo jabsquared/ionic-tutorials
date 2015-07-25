@@ -5,17 +5,15 @@
   </ion-header-bar> -->
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="ticket in tickets" class="item item-icon-left item-icon-right">
+      <ion-item ng-repeat="ticket in tickets" class="item">
+        <div class="ticket-body" ng-style="">
 
-        <div class="event-body" ng-style="{'height' : (30 + 2 * event.dur)+'px'}">
+          <div class="status" ng-style="{'background-color' : color_stat(ticket)}">
+              <!-- the status gets listed here via color -->
+          </div>
 
-          <i class="icon button button-positive badge event-time" ng-click="">
-            <p>
-              {{ticket.id}}
-            </p>
-          </i>
-
-
+          <img class="prod-img" src="{{ticket.img}}" alt="" />
+          <button ng-click='test()'>Run!</button>
         </div>
       </ion-item>
     </ion-list>
