@@ -1,51 +1,66 @@
-app.factory('product_data', ['$http', function($http){
+// app.factory('product_data', ['$http', function($http){
+//
+//   return function(prodnum) {
+//     // Simple GET request example :
+//     $http.get('https://bpshonyak-prod.apigee.net/hello-world/sears?type=details&prodnum=' + prodnum).
+//       success(function(data, status, headers, config) {
+//         console.log(data);
+//         return 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112';
+//       }).
+//       error(function(data, status, headers, config) {
+//         return '';
+//       });
+//   }
+//
+//   // return "http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112";
+//
+// }])
+
+app.factory('ticket_data', ['$http', function($http) {
+  console.log('in service!');
 
   var getinfo = function(prodnum) {
+    console.log("in getinfo");
     // Simple GET request example :
-    $http.get('https://bpshonyak-prod.apigee.net/hello-world/sears?type=details&prodnum=' + prodnum).
+    var call = $http.get('https://bpshonyak-prod.apigee.net/hello-world/sears?type=details&prodnum=' + prodnum).
       success(function(data, status, headers, config) {
-        console.log(data);
+        console.log('success');
+        return 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112';
       }).
       error(function(data, status, headers, config) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
+        return 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112';
+        console.log('failure');
       });
   }
 
-  return "http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_170845201";
-
-}])
-
-app.factory('ticket_data', ['product_data', function(product_data) {
-  console.log('in service!');
     var tickets = [
       {
         id        : 1,
         tech      : 'Bogdan',
         status    : 'Pending',
         prodnum   : '04649599000P',
-        img       : 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_170845201'
+        img       : getinfo('04649599000P')
       },
       {
         id        : 2,
         tech      : 'Louis',
         status    : 'Pending',
         prodnum   : '02211000000P',
-        img       : 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_170845201'
+        img       : 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112'
       },
       {
         id        : 3,
         tech      : 'Jim',
         status    : 'Complete',
         prodnum   : '02615000000P',
-        img       : 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_170845201'
+        img       : 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112'
       },
       {
         id        : 4,
         tech      : 'Brain',
         status    : 'In Progress',
         prodnum   : '04622442000P',
-        img       : 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_170845201'
+        img       : 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112'
       }
     ]
     return {
