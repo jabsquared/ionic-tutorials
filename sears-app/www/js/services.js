@@ -1,40 +1,40 @@
-app.factory('ticketService', function($http) {
-  var promise;
-  var ticketService = {
-    async: function() {
-      if (!promise) {
-        // $http returns a promise, which has a then function, which also returns a promise
+// app.factory('product_data', ['$http', function($http){
+//
+//   return function(prodnum) {
+//     // Simple GET request example :
+//     $http.get('https://bpshonyak-prod.apigee.net/hello-world/sears?type=details&prodnum=' + prodnum).
+//       success(function(data, status, headers, config) {
+//         console.log(data);
+//         return 'http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112';
+//       }).
+//       error(function(data, status, headers, config) {
+//         return '';
+//       });
+//   }
+//
+//   // return "http://c.shld.net/rpx/i/s/i/spin/image/spin_prod_1114954112";
+//
+// }])
 
-          var url =  'https://bpshonyak-prod.apigee.net/hello-world/sears?type=details&prodnum=' + prodnum;
-          $http.get(url).
-            success(function(data, status, headers, config) {
-              console.log(data);
-              console.log('success');
-            }).
-            error(function(data, status, headers, config) {
-              console.log("Failure");
-              console.log(url);
-            });
-
-        promise = $http.get('test.json').then(function(response) {
-          // The then function here is an opportunity to modify the response
-          console.log(response);
-          // The return value gets picked up by the then in the controller.
-          return response.data;
-        });
-      }
-      // Return the promise to the controller
-      return promise;
-    }
-  };
-  return ticketService;
-});
-
-
-
-
-app.factory('ticketData', ['$http','ticketService', function($http) {
+app.factory('ticketData', ['$http', function($http) {
   // console.log('in service!');
+
+  var info = null;
+  var getinfo = function(prodnum) {
+    // console.log("in getinfo");
+    // Simple GET request example :
+    var url = 'https://bpshonyak-prod.apigee.net/hello-world/sears?type=details&prodnum=' + prodnum;
+
+    $http.get(url).
+    success(function(data, status, headers, config) {
+      console.log(data);
+      console.log('success');
+    }).
+    error(function(data, status, headers, config) {
+      console.log("Failure");
+      console.log(url);
+    });
+  };
 
   var tickets = [{
     id: 1,
