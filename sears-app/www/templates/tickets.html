@@ -6,18 +6,6 @@
     </p>
   </ion-header-bar>
   <ion-content>
-    <!-- <ion-list>
-      <ion-item ng-repeat="tech in techs" class="item">
-        <div class="ticket-body" ng-style="">
-
-          <div class="status" ng-style="">
-          </div>
-
-          <img class="prod-img" src="" alt="" />
-          <button ng-click=''>Run!</button>
-        </div>
-      </ion-item>
-    </ion-list> -->
 
     <div class="prod-search">
       <div class="prod-search-inner">
@@ -32,25 +20,38 @@
 
       <label class="item item-input item-stacked-label">
         <span class="input-label">TYPE</span>
-        <input type="text" placeholder="Front Load">
+        <!-- <input type="text" placeholder="Front Load"> -->
+        <select>
+          <option ng-repeat="type in types">
+            {{type}}
+          </option>
+        </select>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">BRAND</span>
-        <input type="text" placeholder="Whirlpool">
+        <select>
+          <option ng-repeat="brand in brands">
+            {{brand}}
+          </option>
+        </select>
       </label>
       <label class="item item-input item-stacked-label">
-        <span class="input-label">WARRANTY STATUS</span>
-        <input type="text" placeholder="john@suhr.com">
+        <span class="">WARRANTY STATUS</span>
+        <!-- <input type="text" placeholder="john@suhr.com"> -->
+        <select>
+          <option ng-repeat="w in warrantys">
+            {{w}}
+          </option>
+        </select>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">NATURE OF PROBLEM (SELECT OR RECORD)</span>
-        <input type="text" placeholder="john@suhr.com">
-        <select>
-
-        <option ng-repeat="product in products">
-          {{product.Description.BrandName}}
-        </option>
-        </select>
+        <input type="text" placeholder="Some Bullshit">
+        <!-- <select>
+          <option ng-repeat="brand in brands">
+            {{brand}}
+          </option>
+        </select> -->
       </label>
     </div>
 
