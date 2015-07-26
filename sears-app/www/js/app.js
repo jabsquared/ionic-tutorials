@@ -29,7 +29,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('schedule', {
-    url: '/shedule',
+    url: '/schedule',
     templateUrl: 'templates/schedule.html',
     controller: 'ScheduleCtrl'
   });
