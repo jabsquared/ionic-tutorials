@@ -7,3 +7,8 @@ img {
 	margin-top: 8px;
 	height: 30px;
 }
+
+.video-thumb {
+	width: 45vw;
+	height: 25vh;
+}
