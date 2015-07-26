@@ -1,5 +1,9 @@
 // All of the apps controllers are located here.
 
+app.controller('ScheduleCtrl', ['$scope', function($scope){
+
+}]);
+
 app.controller('TicketsCtrl', ['$scope', 'techs', 'product_data', '$http', function($scope, techs, product_data, $http) {
 
         var unique = function(arr) {

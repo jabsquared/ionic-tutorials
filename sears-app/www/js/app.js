@@ -28,10 +28,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
     controller: 'TicketsCtrl'
   })
 
-  .state('event', {
-    url: '/event/:id',
-    templateUrl: 'templates/event.html',
-    controller: 'EventCtrl'
+  .state('schedule', {
+    url: '/shedule',
+    templateUrl: 'templates/schedule.html',
+    controller: 'ScheduleCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback
