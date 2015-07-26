@@ -1,21 +1,60 @@
 <ion-view name="event">
-  <!-- <ion-header-bar class="bar-light">
-    <a href="#/schedule" class="button icon ion-arrow-left-b"></a>
-    <img id="logo-img" src="./img/logo.png" alt="Univision" href="#/schedule" />
-  </ion-header-bar> -->
+  <ion-header-bar class="bar-light">
+    <a href="#" class="button icon ion-arrow-left-b"></a>
+    <p>
+      SCHEDULE A SERVICE
+    </p>
+  </ion-header-bar>
   <ion-content>
-    <ion-list>
+    <!-- <ion-list>
       <ion-item ng-repeat="tech in techs" class="item">
         <div class="ticket-body" ng-style="">
 
           <div class="status" ng-style="">
-              <!-- the status gets listed here via color -->
           </div>
 
           <img class="prod-img" src="" alt="" />
           <button ng-click=''>Run!</button>
         </div>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
+
+    <div class="prod-search">
+      <div class="prod-search-inner">
+        <label class="item item-input item-floating-label">
+          <input type="text" placeholder="Search product or scan bar code">
+          <i class="icon ion-search placeholder-icon"></i>
+        </label>
+      </div>
+    </div>
+
+    <div class="list">
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">TYPE</span>
+        <input type="text" placeholder="Front Load">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">BRAND</span>
+        <input type="text" placeholder="Whirlpool">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">WARRANTY STATUS</span>
+        <input type="text" placeholder="john@suhr.com">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">NATURE OF PROBLEM (SELECT OR RECORD)</span>
+        <input type="text" placeholder="john@suhr.com">
+        <select>
+
+        <option ng-repeat="product in products">
+          {{product.Description.BrandName}}
+        </option>
+        </select>
+      </label>
+    </div>
+
+    <button class="orange button button-large" ng-click="test()" type="button" name="checkcal">CHECK CALENDER</button>
+
   </ion-content>
 </ion-view>

@@ -3,6 +3,7 @@
 app.controller('TicketsCtrl', ['$scope', 'techs', 'product_data', '$http', function($scope, techs, product_data, $http) {
 
   $scope.techs = techs.all();
+  $scope.products;
 
   console.log('before call');
 
@@ -11,16 +12,14 @@ app.controller('TicketsCtrl', ['$scope', 'techs', 'product_data', '$http', funct
 
     $http.get('https://bpshonyak-prod.apigee.net/hello-world/sears?type=searchcat&cat=Refrigerators')
       .success(function(data, status, headers, config) {
-        console.log('Data: ' + JSON.stringify(data));
-
+        $scope.products = data.SearchResults.Products;
+        console.log($scope.products);
+        // console.log('Data: ' + JSON.stringify(data));
       }).
       error(function(data, status, headers, config) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-        console.log(data);
-        console.log(status);
-        console.log(headers);
-
+        // console.log(data);
+        // console.log(status);
+        // console.log(headers);
       });
 
     console.log('end!');

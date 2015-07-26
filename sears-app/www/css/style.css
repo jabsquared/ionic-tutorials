@@ -25,3 +25,43 @@
   padding: 0px;
   margin: 0.5em 0em;
 }
+
+.list {
+  margin: 0em auto;
+  width: 80%;
+}
+
+.prod-search {
+  padding: 1em 0em;
+  background-color: #f8f8f9;
+}
+
+.prod-search-inner {
+  width: 80%;
+  margin: 0em auto;
+}
+
+.prod-search-inner input {
+  float: left;
+  width: 90%;
+}
+
+.prod-search-inner i {
+  float: right;
+  vertical-align: middle;
+}
+
+.item {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.orange {
+  background-color: #ff893b;
+  border: none;
+  color: #fff;
+  margin: 0 auto;
+  margin-top: 1.5em;
+  text-align: center;
+}

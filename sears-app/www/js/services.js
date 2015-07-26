@@ -6,8 +6,6 @@ app.factory('product_data', ['$http', function($http){
 
 app.factory('techs', ['$http', function($http) {
 
-  var getinfo = function(prodnum) {
-
   var results = [{
     id: 1,
     name: 'Bogdan',
