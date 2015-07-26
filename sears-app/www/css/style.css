@@ -64,4 +64,13 @@
   margin: 0 auto;
   margin-top: 1.5em;
   text-align: center;
+  width: 100%;
+}
+
+.options {
+  margin-top: 1.3em;
+}
+
+.item .item-input .item-stacked-label {
+  margin-top: 1em;
 }

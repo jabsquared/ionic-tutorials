@@ -2,17 +2,20 @@
   <ion-header-bar class="bar-light">
     <a href="#" class="button icon ion-arrow-left-b"></a>
     <p>
-      SCHEDULE A SERVICE
+      SUBMIT AND ISSUE
     </p>
   </ion-header-bar>
   <ion-content>
 
     <div class="prod-search">
-      <div class="prod-search-inner">
-        <label class="item item-input item-floating-label">
-          <input type="text" placeholder="Search product or scan bar code">
-          <i class="icon ion-search placeholder-icon"></i>
-        </label>
+      <div class="prod-search-inner" >
+        <!-- <label class="item item-input item-floating-label"> -->
+        <a href="#">
+          <img style="display:inline-block" src="img/barcode.png" class="icon ion-search placeholder-icon">
+          </img>
+          <h4 class="icon" style="display:inline-block; margin: 0px; height: 100%">Scan Your Item</h4>
+        </a>
+        <!-- </label> -->
       </div>
     </div>
 
@@ -21,41 +24,41 @@
       <label class="item item-input item-stacked-label">
         <span class="input-label">TYPE</span>
         <!-- <input type="text" placeholder="Front Load"> -->
-        <select>
-          <option ng-repeat="type in types">
-            {{type}}
-          </option>
-        </select>
       </label>
+      <select class="options" ng-model='test' ng-options="type for type in types" ng-change='changeType(test)'>
+        <!-- <option>
+          {{type}}
+        </option> -->
+      </select>
       <label class="item item-input item-stacked-label">
         <span class="input-label">BRAND</span>
-        <select>
-          <option ng-repeat="brand in brands">
-            {{brand}}
-          </option>
-        </select>
       </label>
+      <select class="options">
+        <option ng-repeat="brand in brands">
+          {{brand}}
+        </option>
+      </select>
       <label class="item item-input item-stacked-label">
-        <span class="">WARRANTY STATUS</span>
+        <span class="input-label">WARRANTY STATUS</span>
         <!-- <input type="text" placeholder="john@suhr.com"> -->
-        <select>
-          <option ng-repeat="w in warrantys">
-            {{w}}
-          </option>
-        </select>
       </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">NATURE OF PROBLEM (SELECT OR RECORD)</span>
-        <input type="text" placeholder="Some Bullshit">
-        <!-- <select>
-          <option ng-repeat="brand in brands">
-            {{brand}}
-          </option>
-        </select> -->
+      <select class="options">
+        <option ng-repeat="w in warrantys">
+          {{w}}
+        </option>
+      </select>
+      <label class="item item-input item-select">
+        <span class="input-label">NATURE OF PROBLEM</span>
+        <!-- <input type="text" placeholder="Some Bullshit"> -->
       </label>
+      <select class="options">
+        <option ng-repeat="problem in problems">
+          {{problem}}
+        </option>
+      </select>
     </div>
 
-    <button class="orange button button-large" ng-click="test()" type="button" name="checkcal">CHECK CALENDER</button>
+    <button class="orange button button-large" ng-click="test()" type="button" name="checkcal">SUBMIT</button>
 
   </ion-content>
 </ion-view>
