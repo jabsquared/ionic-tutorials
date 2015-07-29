@@ -1,5 +1,7 @@
-<ion-view name="login-view">
+<ion-view name="account-view">
   <ion-content class="padding">
-    <h1>Logged In!</h1>
+    <img ng-src="{{user.profile_img}}" alt="" />
+    <h2>{{user.full_name}}</h2>
+    <h4>{{user.email}}</h4>
   </ion-content>
 </ion-view>
