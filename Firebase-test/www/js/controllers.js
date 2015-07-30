@@ -70,7 +70,7 @@ app.controller('AccountCtrl', function($scope, $state, fbUserData) {
     ref.unauth();
     $state.go('login');
   }
-});
+})
 
 app.controller('SignupCtrl', function($scope, $state) {
   $scope.data = {};
