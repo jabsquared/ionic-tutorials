@@ -18,12 +18,21 @@ app.controller('LoginCtrl', function($scope, $state, fbUserData, Auth) {
     });
   }
 
-  $scope.login = function () {
-
+  $scope.login = function() {
+    Auth.$authWithPassword({
+      email: $scope.data.email,
+      password: $scope.data.password
+    }, function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        console.log("Authenticated successfully with payload:", authData);
+      }
+    });
   }
 
-  $scope.signup = function () {
-      $state.go('signup');
+  $scope.signup = function() {
+    $state.go('signup');
   }
 
   Auth.$onAuth(function(authData) {
@@ -39,9 +48,13 @@ app.controller('LoginCtrl', function($scope, $state, fbUserData, Auth) {
           email: authData.facebook.email,
           profile_img: authData.facebook.profileImageURL
         });
-        // console.log(fbUserData.getUser());
-      } else {
-
+      } else if (authData.provider === 'password') {
+        fbUserData.setUser({
+          uid: authData.uid,
+          full_name: '',
+          email: authData.password.email,
+          profile_img: authData.password.profileImageURL
+        });
       }
       $state.go('account');
     }
@@ -53,7 +66,7 @@ app.controller('LoginCtrl', function($scope, $state, fbUserData, Auth) {
 app.controller('AccountCtrl', function($scope, $state, fbUserData) {
   $scope.user = fbUserData.getUser();
   var ref = new Firebase("https://piertruckerapp.firebaseio.com");
-  $scope.logout = function () {
+  $scope.logout = function() {
     ref.unauth();
     $state.go('login');
   }
@@ -61,12 +74,29 @@ app.controller('AccountCtrl', function($scope, $state, fbUserData) {
 
 app.controller('SignupCtrl', function($scope, $state) {
   $scope.data = {};
-  $scope.signup = function () {
-      if ($scope.data.password != null && $scope.data.password.length > 7 && $scope.data.password === data.confirm
-      ){
-        $state.go('login');
-      } else {
-        $state.go('login');
-      }
+
+  $scope.signup = function() {
+    if (
+      $scope.data.password != null && $scope.data.password.length > 7 &&
+      $scope.data.password === $scope.data.confirm &&
+      $scope.data.email != null &&
+      $scope.data.email.length > 5
+    ) {
+      // Create a new User
+      var ref = new Firebase("https://piertruckerapp.firebaseio.com");
+      ref.createUser({
+        email: $scope.data.email,
+        password: $scope.data.password
+      }, function(error, userData) {
+        if (error) {
+          console.log("Error creating user:", error);
+        } else {
+          console.log("Successfully created user account with uid:", userData.uid);
+          $state.go('login');
+        }
+      });
+    } else {
+      console.log('incorrect credentials');
+    }
   }
 });
