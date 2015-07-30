@@ -1,3 +1,8 @@
+app.factory("Auth", function($firebaseAuth) {
+  var usersRef = new Firebase("https//piertruckerapp.firebaseio.com/users");
+  return $firebaseAuth(usersRef);
+})
+
 app.service('fbUserData', function () {
         var user = {
             uid:          '',
