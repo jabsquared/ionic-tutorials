@@ -1,4 +1,4 @@
-<ion-view name="login-view">
+<ion-view name="signup-view">
   <ion-content class="padding">
     <div class="title-image">
     </div>
@@ -9,9 +9,10 @@
           <label class="item item-input">
               <input type="password" placeholder="Password" ng-model="data.password">
           </label>
+          <label class="item item-input">
+              <input type="password" placeholder="Confirm" ng-model="data.confirm">
+          </label>
       </div>
-      <button class="button button-block button-calm" ng-click="login()">Login</button>
-      <button class="button button-block button-positive" ng-click="fbLogin()">Login with Facebook</button>
       <button class="button button-block button-assertive" ng-click="signup()">Sign up</button>
   </ion-content>
 </ion-view>

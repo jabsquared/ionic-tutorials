@@ -28,6 +28,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		controller: 'LoginCtrl'
 	})
 
+  .state('signup', {
+		url: '/signup',
+		templateUrl: 'templates/signup.html',
+		controller: 'SignupCtrl'
+	})
+
 	.state('account', {
 		url: '/account',
 		templateUrl: 'templates/account.html',
