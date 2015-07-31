@@ -11,6 +11,7 @@ app.controller('LoginCtrl', function($scope, $state, $rootScope, userData) {
       if (error) {
         //error — could not log user in
         console.log('Could not login.');
+        console.log(error);
       } else {
         //success — user has been logged in
         var token = $rootScope.dataClient.token;
@@ -42,6 +43,10 @@ app.controller('AccountCtrl', function($scope, $state, userData) {
 
     $scope.schedule = function() {
       $state.go('schedule');
+    }
+
+    $scope.logout = function () {
+      $state.go('login');
     }
 
   }
