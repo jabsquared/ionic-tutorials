@@ -99,4 +99,9 @@ app.controller('SignupCtrl', function($scope, $state) {
       console.log('incorrect credentials');
     }
   }
+
+  $scope.cancel = function() {
+    $state.go('login');
+  }
+
 });
