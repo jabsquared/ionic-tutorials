@@ -3,8 +3,14 @@
     <div class="title-image">
     </div>
       <div class="list list-inset">
+        <label class="item item-input">
+            <input type="text" placeholder="Full Name" ng-model="data.name" mask="">
+        </label>
+        <label class="item item-input">
+            <input type="text" placeholder="Username" ng-model="data.username" mask="">
+        </label>
           <label class="item item-input">
-              <input type="text" placeholder="email" ng-model="data.email" mask="example@mail.com">
+              <input type="text" placeholder="Email" ng-model="data.email" mask="example@mail.com">
           </label>
           <label class="item item-input">
               <input type="password" placeholder="Password" ng-model="data.password">

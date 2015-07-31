@@ -1,8 +1,18 @@
 
 var app = angular.module('starter', ['ionic', 'flexcalendar' , 'pascalprecht.translate'])
 
-app.run(function($ionicPlatform) {
+app.run(function($ionicPlatform, $rootScope) {
   $ionicPlatform.ready(function() {
+
+    // Apigee SDK init
+    var client_creds = {
+      orgName: 'bpshonyak',
+      appName: 'sandbox',
+      logging:true
+    }
+    //Initializes the SDK. Also instantiates Apigee.MonitoringClient
+    $rootScope.dataClient = new Apigee.Client(client_creds);
+
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }

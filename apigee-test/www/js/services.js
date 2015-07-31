@@ -1,6 +1,9 @@
-// app.factory("Auth", function($firebaseAuth) {
-//   var usersRef = new Firebase("https//piertruckerapp.firebaseio.com/users");
-//   return $firebaseAuth(usersRef);
+// app.factory("apigeeStorage", function() {
+//   var dataClient = new Apigee.Client({
+//        orgName: bpshonyak,
+//        appName: sandbox
+//    });
+//
 // })
 
 app.service('fbUserData', function () {
