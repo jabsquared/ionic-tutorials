@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', function($scope, $state, $rootScope) {
+app.controller('LoginCtrl', function($scope, $state, $rootScope, userData) {
   $scope.data = {}
 
   $scope.fbLogin = function() {
@@ -13,8 +13,10 @@ app.controller('LoginCtrl', function($scope, $state, $rootScope) {
         console.log('Could not login.');
       } else {
         //success — user has been logged in
-        var token = $rootScope.dataClient;
-        console.log(token);
+        var token = $rootScope.dataClient.token;
+        console.log(response);
+        $scope.data.uid = $rootScope.dataClient.token;
+        userData.setUser($scope.data);
         $state.go('account');
       }
     });
@@ -26,9 +28,8 @@ app.controller('LoginCtrl', function($scope, $state, $rootScope) {
 
 })
 
-app.controller('AccountCtrl', function($scope, $state, fbUserData) {
-  $scope.user = fbUserData.getUser();
-  $scope.data = {};
+app.controller('AccountCtrl', function($scope, $state, userData) {
+  $scope.user = userData.getUser();
   $scope.drop = false;
   $scope.drop2 = false;
 
@@ -76,8 +77,9 @@ app.controller('SignupCtrl', function($scope, $state, $rootScope) {
                 console.log('Failed to create user.');
               } else {
                 // Refresh the user list to include the new user.
-                getUsers();
+                // getUsers();
                 console.log('User created!');
+                $state.go('account');
               }
             });
         }

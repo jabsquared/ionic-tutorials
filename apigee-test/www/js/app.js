@@ -8,7 +8,6 @@ app.run(function($ionicPlatform, $rootScope) {
     var client_creds = {
       orgName: 'bpshonyak',
       appName: 'sandbox',
-      logging:true
     }
     //Initializes the SDK. Also instantiates Apigee.MonitoringClient
     $rootScope.dataClient = new Apigee.Client(client_creds);

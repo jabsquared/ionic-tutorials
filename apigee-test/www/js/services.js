@@ -1,12 +1,5 @@
-// app.factory("apigeeStorage", function() {
-//   var dataClient = new Apigee.Client({
-//        orgName: bpshonyak,
-//        appName: sandbox
-//    });
-//
-// })
 
-app.service('fbUserData', function () {
+app.service('userData', function () {
         var user = {
             uid:          '',
             full_name:    '',
@@ -20,9 +13,9 @@ app.service('fbUserData', function () {
             },
             setUser: function(data) {
                 user.uid          = data.uid;
-                user.full_name    = data.full_name;
+                user.full_name    = data.name;
                 user.email        = data.email;
-                user.profile_img  = data.profile_img;
+                user.profile_img  = data.profile_img || '';
             }
         };
 });
