@@ -1,4 +1,4 @@
-app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlatform', '$ionicPopup', 'event_data', function($scope, $cordovaLocalNotification, $ionicPlatform, $ionicPopup, event_data) {
+app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPopup', 'event_data', function($scope, $cordovaLocalNotification, $ionicPopup, event_data) {
   console.log("in controller");
 
   $scope.events = event_data.all();
@@ -62,9 +62,15 @@ app.controller('EventsCtrl', ['$scope', '$cordovaLocalNotification', '$ionicPlat
 
     var newDate = subtractMinutes(single_event.start, minutes);
 
+    // Real funtion
+    // function subtractMinutes(date_obj, minutes) {
+    //   date_obj = new Date(date_obj);
+    //   return new Date(date_obj.getTime() - minutes * 60000);
+    // }
+
     function subtractMinutes(date_obj, minutes) {
-      date_obj = new Date(date_obj);
-      return new Date(date_obj.getTime() - minutes * 60000);
+      new_date_obj = new Date();
+      return new Date(new_date_obj.getTime() + minutes * 5000);
     }
 
     $cordovaLocalNotification.schedule({

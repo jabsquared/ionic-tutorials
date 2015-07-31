@@ -7,11 +7,13 @@ ion-header-bar {
 }
 
 #logo-img {
+  clear:both;
   width: fixed;
   max-width: 180px;
   height: 40px;
+  margin-top: 3em;
   margin: 0 auto;
-  padding-bottom: .4em;
+  padding-bottom: 0.2em;
 }
 
 p {
