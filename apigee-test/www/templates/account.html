@@ -1,8 +1,80 @@
 <ion-view name="account-view">
   <ion-content class="padding">
-    <img ng-src="{{user.profile_img}}" alt="" />
-    <h2>{{user.full_name}}</h2>
-    <h4>{{user.email}}</h4>
-    <button class="button button-block button-assertive" ng-click="logout()">Sign Out</button>
+    <!-- <div class="account-info">
+      <img alt="" ng-src="{{user.profile_img}}"/>
+      <h2>{{user.full_name}}</h2>
+      <h4>{{user.email}}</h4>
+      <button class="button button-block button-assertive" ng-click="logout()">Sign Out</button>
+    </div> -->
+
+    <!-- List of Barbers -->
+    <div class="list card">
+      <div class="item item-avatar">
+        <img src="img/ionic.png">
+        <h2>Bogdan Pshonyak</h2>
+        <p>Profesional Barber</p>
+      </div>
+
+      <div class="item item-body">
+        <img class="full-image" src="img/placeholder.png">
+        <p>
+          This is a sample sentance. This is a sample sentance. This is a sample sentance. This is a sample sentance. This is a sample sentance. This is a sample sentance.
+        </p>
+        <p>
+          <a class="subdued" href="#">1 Like</a>
+        </p>
+      </div>
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="#">
+          <i class="icon ion-thumbsup"></i>
+          Like
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-chatbox"></i>
+          Comment
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-share"></i>
+          Share
+        </a>
+      </div>
+    </div>
+
+    <!-- Second Barber -->
+
+    <div class="list card">
+      <div class="item item-avatar">
+        <img src="img/ionic.png">
+        <h2>Brain Rivera</h2>
+        <p>Profesional Barber</p>
+      </div>
+
+      <div class="item item-body">
+        <img class="full-image" src="img/placeholder.png">
+        <p>
+          This is a sample sentance. This is a sample sentance. This is a sample sentance. This is a sample sentance. This is a sample sentance. This is a sample sentance.
+        </p>
+        <p>
+          <a class="subdued" href="#">1 Like</a>
+        </p>
+      </div>
+
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" href="#">
+          <i class="icon ion-thumbsup"></i>
+          Like
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-chatbox"></i>
+          Comment
+        </a>
+        <a class="tab-item" href="#">
+          <i class="icon ion-share"></i>
+          Share
+        </a>
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>
