@@ -1,0 +1,8 @@
+<ion-view name="account-view">
+  <ion-content class="padding">
+    <img ng-src="{{user.profile_img}}" alt="" />
+    <h2>{{user.full_name}}</h2>
+    <h4>{{user.email}}</h4>
+    <button class="button button-block button-assertive" ng-click="logout()">Sign Out</button>
+  </ion-content>
+</ion-view>
