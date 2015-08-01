@@ -1,32 +1,28 @@
-app.controller('LoginCtrl', function($scope, $state, fbUserData, Auth) {
-  $scope.data = {}
+var db = new PouchDB('https://7e95ca9e-57fc-4d13-9202-bf4c5dff28f5-bluemix.cloudant.com/clientdb/_all_docs');
 
-  $scope.fbLogin = function() {
-    Auth.$authWithOAuthPopup("facebook", {
-      scope: "email" // permissions requested
-    }).then(function(authData) {
-      // Login Successful
-    }).catch(function(error) {
-      if (error.code === "TRANSPORT_UNAVAILABLE") {
-        Auth.$authWithOAuthPopup("facebook").then(function(authData) {
-          console.log(authData);
-        });
-      } else {
-        // Another error occurred
-        console.log(error);
-      }
-    });
-  }
+var local = new PouchDB('local_db');
+local.sync(db, {
+  live: true,
+  retry: true
+}).on('error', console.log.bind(console));
+
+app.controller('LoginCtrl', function($scope, $state, $rootScope, userData) {
+  $scope.user = {};
 
   $scope.login = function() {
-    Auth.$authWithPassword({
-      email: $scope.data.email,
-      password: $scope.data.password
-    }, function(error, authData) {
+
+    $rootScope.dataClient.login($scope.user.email, $scope.user.password, function(error, response) {
       if (error) {
-        console.log("Login Failed!", error);
+        //error — could not log user in
+        console.log('Could not login.');
+        console.log(error);
       } else {
-        console.log("Authenticated successfully with payload:", authData);
+        //success — user has been logged in
+        var token = $rootScope.dataClient.token;
+        console.log(response);
+        $scope.user.uid = $rootScope.dataClient.token;
+        userData.setUser($scope.user);
+        $state.go('account');
       }
     });
   }
@@ -35,73 +31,87 @@ app.controller('LoginCtrl', function($scope, $state, fbUserData, Auth) {
     $state.go('signup');
   }
 
-  Auth.$onAuth(function(authData) {
-    if (authData === null) {
-      console.log("Not logged in yet");
-    } else {
-      console.log("Logged in as", authData.uid);
-      // Save Profile Information
-      if (authData.provider === 'facebook') {
-        fbUserData.setUser({
-          uid: authData.uid,
-          full_name: authData.facebook.displayName,
-          email: authData.facebook.email,
-          profile_img: authData.facebook.profileImageURL
-        });
-      } else if (authData.provider === 'password') {
-        fbUserData.setUser({
-          uid: authData.uid,
-          full_name: '',
-          email: authData.password.email,
-          profile_img: authData.password.profileImageURL
-        });
-      }
-      $state.go('account');
-    }
-    $scope.authData = authData; // This will display the user's name in our view
-  });
-
 })
 
-app.controller('AccountCtrl', function($scope, $state, fbUserData) {
-  $scope.user = fbUserData.getUser();
-  var ref = new Firebase("https://piertruckerapp.firebaseio.com");
-  $scope.logout = function() {
-    ref.unauth();
-    $state.go('login');
+app.controller('AccountCtrl', function($scope, $state, userData) {
+  $scope.user = userData.getUser();
+  $scope.drop = false;
+  $scope.drop2 = false;
+
+  $scope.toggle = function(num) {
+    if (num === 1) {
+      $scope.drop = !$scope.drop;
+    } else if (num === 2) {
+      $scope.drop2 = !$scope.drop2;
+    }
+
+    $scope.schedule = function() {
+      $state.go('schedule');
+    }
+
+    $scope.logout = function() {
+      $state.go('login');
+    }
+
   }
 })
 
-app.controller('SignupCtrl', function($scope, $state) {
-  $scope.data = {};
+app.controller('SignupCtrl', function($scope, $state, $rootScope) {
+
+  $scope.user = {};
+
+  // Check for User's name and username
 
   $scope.signup = function() {
-    if (
-      $scope.data.password != null && $scope.data.password.length > 7 &&
-      $scope.data.password === $scope.data.confirm &&
-      $scope.data.email != null &&
-      $scope.data.email.length > 5
-    ) {
-      // Create a new User
-      var ref = new Firebase("https://piertruckerapp.firebaseio.com");
-      ref.createUser({
-        email: $scope.data.email,
-        password: $scope.data.password
-      }, function(error, userData) {
-        if (error) {
-          console.log("Error creating user:", error);
+
+    db.signup($scope.user.email, $scope.user.password, function(err, response) {
+      if (err) {
+        if (err.name === 'conflict') {
+          // "batman" already exists, choose another username
+        } else if (err.name === 'forbidden') {
+          // invalid username
         } else {
-          console.log("Successfully created user account with uid:", userData.uid);
-          $state.go('login');
+          console.log(err);
+          // HTTP error, cosmic rays, etc.
         }
-      });
-    } else {
-      console.log('incorrect credentials');
-    }
+      }
+    });
   }
 
   $scope.cancel = function() {
     $state.go('login');
   }
 
+})
+
+app.controller('ScheduleCtrl', function($scope, $state) {
+  $scope.options = {
+    defaultDate: new Date(2015, 06, 26),
+    minDate: new Date(2015, 06, 12),
+    maxDate: new Date(2015, 12, 31),
+    disabledDates: [
+      new Date(2015, 06, 30),
+      new Date(2015, 07, 25),
+      new Date(2015, 08, 13),
+    ],
+    dayNamesLength: 1, // 1 for "M", 2 for "Mo", 3 for "Mon"; 9 will show full day names. Default is 1.
+    mondayIsFirstDay: true, //set monday as first day of week. Default is false
+    eventClick: function(date) {
+      console.log(date);
+    },
+    dateClick: function(date) {
+      console.log(date);
+    },
+    changeMonth: function(month, year) {
+      console.log(month, year);
+    },
+  };
+
+  $scope.events = [{
+    foo: 'bar',
+    date: new Date(2015, 11, 3)
+  }, {
+    foo: 'bar',
+    date: new Date(2015, 6, 4)
+  }];
 });

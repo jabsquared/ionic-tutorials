@@ -1,25 +1,24 @@
-app.factory("Auth", function($firebaseAuth) {
-  var usersRef = new Firebase("https//piertruckerapp.firebaseio.com/users");
-  return $firebaseAuth(usersRef);
-})
+app.service('userData', function() {
+  var user = {
+    uid: '',
+    full_name: '',
+    email: '',
+    profile_img: '',
+    tel: '',
+    email: '',
+    canceled : 0,
+    note:'',
+  }
 
-app.service('fbUserData', function () {
-        var user = {
-            uid:          '',
-            full_name:    '',
-            email:        '',
-            profile_img:  ''
-        }
-
-        return {
-            getUser: function () {
-                return user;
-            },
-            setUser: function(data) {
-                user.uid          = data.uid;
-                user.full_name    = data.full_name;
-                user.email        = data.email;
-                user.profile_img  = data.profile_img;
-            }
-        };
+  return {
+    getUser: function() {
+      return user;
+    },
+    setUser: function(data) {
+      user.uid = data.uid;
+      user.full_name = data.name;
+      user.email = data.email;
+      user.profile_img = data.profile_img || '';
+    }
+  };
 });
