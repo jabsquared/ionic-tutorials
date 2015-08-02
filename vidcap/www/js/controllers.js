@@ -5,7 +5,8 @@ angular.module('starter.controllers', ['ngCordova'])
 
     $scope.captureVideo = function() {
       $cordovaCapture.captureVideo().then(function(vidData) {
-        VideoService.saveVideo(vidData).success(function(data) {
+        VideoService.saveVideo(vidData)
+        .success(function(data) {
           $scope.clip = data;
           $scope.$apply();
         }).error(function(data) {
