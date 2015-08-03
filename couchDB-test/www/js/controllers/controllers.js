@@ -4,12 +4,34 @@ app.controller("LoginCtrl", function($scope, $state, userData) {
 
   //Temporary User data
   $scope.data.name = "Bogdan Pshonyak";
+  $scope.data.email = "bpshonyak@live.com";
   $scope.data.uid = "jfft54rT#$RQWFg5";
 
   //Functions
   $scope.login = function() {
-    userData.setUser($scope.data);
-    $state.go('account');
+    // remoteUsersDB.login($scope.data.username, $scope.data.password, function(err, response) {
+    //   if (err) {
+    //     if (err.name === 'unauthorized') {
+    //       console.log('name or password incorrect');
+    //     } else {
+    //       console.log('cosmic rays, a meteor, etc.');
+    //     }
+    //   } else {
+    //     userData.setUser($scope.data);
+    //     $state.go('account');
+    //   }
+    // });
+    remoteUsersDB.getUser('test', function(err, response) {
+      if (err) {
+        if (err.name === 'not_found') {
+          console.log(err);
+        } else {
+          console.log(err);
+        }
+      } else {
+        console.log(response);
+      }
+    });
   }
   $scope.fbLogin = function() {
     // login user with facebook account
@@ -27,9 +49,28 @@ app.controller("SignupCtrl", function($scope, $state) {
   $scope.cancel = function() {
     $state.go('login');
   }
+
   $scope.signup = function() {
-    // signup user
+    remoteUsersDB.signup($scope.data.username, $scope.data.password, {
+      metadata: {
+        email: $scope.data.email,
+        name: $scope.data.name
+      }
+    }, function(err, response) {
+      if (err) {
+        if (err.name === 'conflict') {
+          console.log($scope.data.username + ' already exists, choose another username.');
+        } else if (err.name === 'forbidden') {
+          console.log('invalid username');
+        } else {
+          console.log('HTTP error, cosmic rays, etc.');
+        }
+      } else {
+        console.log(response);
+      }
+    });
   }
+
 });
 
 app.controller("AccountCtrl", function($scope, $state, userData, barberListener) {
@@ -96,7 +137,7 @@ app.controller("ScheduleCtrl", function($scope, $state, $ionicPopup, aptListener
     }
     remoteAptDB.post({
       user_id: '23554231512341',
-      barber:  $scope.schedule_info.barber,
+      barber: $scope.schedule_info.barber,
       time: $scope.schedule_info.date.toString(),
       alarm: $scope.schedule_info.alarm,
       done: false,
