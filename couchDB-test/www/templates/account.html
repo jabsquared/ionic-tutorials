@@ -5,12 +5,12 @@
       <h4>{{user.email}}</h4>
       <h4>{{user.uid}}</h4>
     </div>
-
-<!-- List of Barbers -->
-    <div class="list card">
+    <!-- <button class="button button-block button-stable" ng-click="submitData()">Add Barber</button> -->
+    <!-- List of Barbers -->
+    <div class="list card" ng-repeat="barber in barbers">
       <div class="item item-avatar" ng-click="toggle(1)">
         <img src="img/ionic.png">
-        <h2>Bogdan Pshonyak</h2>
+        <h2>{{barber.name}}</h2>
         <p>Profesional Barber</p>
       </div>
 
@@ -18,7 +18,7 @@
         <div class="item item-body">
           <img class="full-image" src="img/placeholder.png">
           <p>
-            This is a sample sentance. This is a sample sentance. This is a sample sentance. This is a sample sentance. This is a sample sentance. This is a sample sentance.
+            {{barber.desc}}
           </p>
           <p>
             <a class="subdued" href="#">1 Like</a>
@@ -28,32 +28,6 @@
         <div class="item tabs tabs-secondary tabs-icon-left">
           <button class="button button-block schedule-btn button-dark" ng-click="schedule()" style="margin: 0px">Schedule Haircut</button>
           <button class="button button-block button-assertive" ng-click="logout()">Sign Out</button>
-        </div>
-      </div>
-    </div>
-
-<!-- Second Barber -->
-
-    <div class="list card">
-      <div class="item item-avatar" ng-click="toggle(2)">
-        <img src="img/ionic.png">
-        <h2>Brain Rivera</h2>
-        <p>Profesional Barber</p>
-      </div>
-
-      <div class="more-info" ng-if="drop2">
-        <div class="item item-body">
-          <img class="full-image" src="img/placeholder.png">
-          <p>
-            This is a sample sentance. This is a sample sentance. This is a sample sentance. This is a sample sentance. This is a sample sentance. This is a sample sentance.
-          </p>
-          <p>
-            <a class="subdued" href="#">1 Like</a>
-          </p>
-        </div>
-
-        <div class="item tabs tabs-secondary tabs-icon-left">
-          <button class="button button-block schedule-btn button-dark" ng-click="schedule()" style="margin: 0px">Schedule Haircut</button>
         </div>
       </div>
     </div>

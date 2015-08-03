@@ -32,10 +32,11 @@ app.controller("SignupCtrl", function($scope, $state) {
   }
 });
 
-app.controller("AccountCtrl", function($scope, $state, userData) {
+app.controller("AccountCtrl", function($scope, $state, userData, barberListener) {
 
   //Feilds
   $scope.user = userData.getUser();
+  $scope.barbers = [];
   $scope.drop = false;
   $scope.drop2 = false;
 
@@ -54,11 +55,34 @@ app.controller("AccountCtrl", function($scope, $state, userData) {
     $scope.logout = function() {
       $state.go('login');
     }
-
   }
+
+  // $scope.submitData = function() {
+  //   if ($scope.hasOwnProperty("barbers") !== true) {
+  //     $scope.barbers = [];
+  //   }
+  //   remoteBarberDB.post({
+  //       name: 'Gambino',
+  //       desc: 'This is where the barbers description would go. Their favorite styles to work with, history, and other information would all by written here. Maybe a short bio or something... idk. Lets add one more sentance to finish it off ;)'
+  //   });
+  // }
+
+  //Event Listeners
+  $scope.$on('add', function(event, apt) {
+    $scope.barbers.push(apt);
+  });
+
+  $scope.$on('delete', function(event, id) {
+    for (var i = 0; i < $scope.barbers.length; i++) {
+      if ($scope.barbers[i]._id === id) {
+        $scope.barbers.splice(i, 1);
+      }
+    }
+  });
+
 });
 
-app.controller("ScheduleCtrl", function($scope, $state, $ionicPopup, PouchDBListener) {
+app.controller("ScheduleCtrl", function($scope, $state, $ionicPopup, aptListener) {
 
   //Feilds
   $scope.appointments = [];
@@ -70,7 +94,7 @@ app.controller("ScheduleCtrl", function($scope, $state, $ionicPopup, PouchDBList
     if ($scope.hasOwnProperty("appointments") !== true) {
       $scope.appointments = [];
     }
-    localDB.post({
+    remoteAptDB.post({
       user_id: '23554231512341',
       barber:  $scope.schedule_info.barber,
       time: $scope.schedule_info.date.toString(),

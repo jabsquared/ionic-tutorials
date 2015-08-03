@@ -1,9 +1,16 @@
 var app = angular.module('starter', ['ionic', 'flexcalendar', 'pascalprecht.translate']);
 
 //instanciate databases
-var localDB = new PouchDB("appointments");
+var localAptDB = new PouchDB("appointments");
+var remoteAptDB = new PouchDB('https://itchentleverturearywhers:U7vFQNN2joOhU03Mw0iUx3SN @af48ada6-78db-4210-a80d-86619c82407e-bluemix.cloudant.com/appointments', {
+  auth: {
+    username: 'itchentleverturearywhers',
+    password: 'U7vFQNN2joOhU03Mw0iUx3SN'
+  }
+});
 
-var remoteDB = new PouchDB('https://itchentleverturearywhers:U7vFQNN2joOhU03Mw0iUx3SN @af48ada6-78db-4210-a80d-86619c82407e-bluemix.cloudant.com/appointments', {
+var localBarberDB = new PouchDB("barbers");
+var remoteBarberDB = new PouchDB('https://itchentleverturearywhers:U7vFQNN2joOhU03Mw0iUx3SN @af48ada6-78db-4210-a80d-86619c82407e-bluemix.cloudant.com/barbers', {
   auth: {
     username: 'itchentleverturearywhers',
     password: 'U7vFQNN2joOhU03Mw0iUx3SN'
@@ -20,7 +27,8 @@ app.run(function($ionicPlatform) {
       StatusBar.styleDefault();
     }
     //auto sync local and remote db's
-    localDB.sync(remoteDB, { live:true });
+    localAptDB.sync(remoteAptDB, { live:true });
+    localBarberDB.sync(remoteBarberDB, { live:true });
   });
 })
 
