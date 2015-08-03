@@ -1,22 +1,24 @@
 angular.module('starter.services', [])
   .service('VideoService', function($q) {
+
     var deferred = $q.defer();
+
     var promise = deferred.promise;
 
-    promise.success = function(fun) {
-      promise.then(fun);
+    promise.success = function(fn) {
+      promise.then(fn);
+
       return promise;
     }
 
-    promise.error = function(fun) {
-      promise.then(null, fun);
+    promise.error = function(fn) {
+      promise.then(null, fn);
       return promise;
     }
 
     function createFileEntry(fileURI) {
       window.resolveLocalFileSystemURL(fileURI, function(entry) {
         return copyFile(entry);
-        // body...
       }, fail);
     }
 
@@ -29,8 +31,7 @@ angular.module('starter.services', [])
         fileEntry.copyTo(storagePath, newName, function(succ) {
           return onCopySuccess(succ);
         }, fail);
-      })
-
+      },fail);
     }
 
     function onCopySuccess(entry) {

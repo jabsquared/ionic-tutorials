@@ -1,0 +1,23 @@
+<ion-view name="login-view">
+  <ion-content class="padding">
+    <div class="title-image">
+      <img id="logo-img" src="img/logo.png" alt="THE BEAU BARBERSHOP" />
+    </div>
+      <div class="list list-inset" style="margin-top: 2em">
+          <label class="item item-input">
+              <input type="text" placeholder="email" ng-model="user.email" mask="example@mail.com">
+          </label>
+          <div class="padding">
+
+          </div>
+          <label class="item item-input">
+              <input type="password" placeholder="Password" ng-model="user.password">
+          </label>
+      </div>
+      <div class="" style="margin-top: 3em">
+        <button class="button button-block button-dark" ng-click="login()">Login</button>
+        <!-- <button class="button button-block button-positive" ng-click="fbLogin()">Login with Facebook</button> -->
+        <button class="button button-block button-stable" ng-click="signup()">Sign up</button>
+      </div>
+  </ion-content>
+</ion-view>
