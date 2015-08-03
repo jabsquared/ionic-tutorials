@@ -14,9 +14,11 @@ app.controller('LoginCtrl', function($scope, $state, $rootScope, userData) {
         console.log(error);
       } else {
         //success — user has been logged in
-        var token = $rootScope.dataClient.token;
         console.log(response);
-        $scope.data.uid = $rootScope.dataClient.token;
+        $scope.data.uid = response.access_token;
+        $scope.data.picture = response.user.picture;
+        $scope.data.name = response.user.name;
+        console.log($scope.data);
         userData.setUser($scope.data);
         $state.go('account');
       }
@@ -45,7 +47,7 @@ app.controller('AccountCtrl', function($scope, $state, userData) {
       $state.go('schedule');
     }
 
-    $scope.logout = function () {
+    $scope.logout = function() {
       $state.go('login');
     }
 
@@ -59,7 +61,7 @@ app.controller('SignupCtrl', function($scope, $state, $rootScope) {
   $scope.signup = function() {
     // Options representing the new user to add.
     var options = {
-        'name':     $scope.data.username,
+        'name': $scope.data.username,
         'type': 'users'
       }
       // Call an SDK method to get an entity representing
@@ -101,7 +103,40 @@ app.controller('SignupCtrl', function($scope, $state, $rootScope) {
 
 })
 
-app.controller('ScheduleCtrl', function($scope, $state) {
+app.controller('ScheduleCtrl', function($scope, $state, $rootScope, userData) {
+
+  var user = userData.getUser();
+
+  $scope.logout = function() {
+    $state.go('login');
+  }
+
+  $scope.submitData = function() {
+    //Set the properties of the entity
+    console.log('entered submit function');
+    var options = {
+      type: 'appointment', //required
+      user_id: user.uid,
+      barber_id: '2',
+      time: 'Friday, Jun 31 at 3pm',
+      alarm: true,
+      done: false
+    }
+
+    //Create the entity and process the results
+    $rootScope.dataClient.createEntity(options, function(error, result) {
+      if (error) {
+        //error
+        console.log('oooh waa waa wee-waa');
+      } else {
+        //success
+        console.log('very nice!');
+      }
+    });
+  }
+
+  // Flex Calendar Shit
+
   $scope.options = {
     defaultDate: new Date(2015, 06, 26),
     minDate: new Date(2015, 06, 12),
@@ -131,4 +166,26 @@ app.controller('ScheduleCtrl', function($scope, $state) {
     foo: 'bar',
     date: new Date(2015, 6, 4)
   }];
+
+  // Retriving Data -----------------------------------------
+
+  $scope.remoteDate = {};
+
+  var options = {
+    type: "appointments", //Required - the type of collection to be retrieved
+    client: $rootScope.dataClient //Required
+  };
+
+  //Create a collection object to hold the response
+  var collection = new Apigee.Collection(options);
+
+  //Call request to initiate the API call
+  collection.fetch(function() {
+    console.log('success!');
+    $scope.remoteDate = collection._list;
+    console.log($scope.remoteDate);
+  }, function(error) {
+    console.log(error);
+  });
+
 });

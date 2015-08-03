@@ -4,10 +4,9 @@
       <h2>{{user.full_name}}</h2>
       <h4>{{user.email}}</h4>
       <h4>{{user.uid}}</h4>
-      <button class="button button-block button-assertive" ng-click="logout()">Sign Out</button>
     </div>
 
-    <!-- List of Barbers -->
+<!-- List of Barbers -->
     <div class="list card">
       <div class="item item-avatar" ng-click="toggle(1)">
         <img src="img/ionic.png">
@@ -27,12 +26,13 @@
         </div>
 
         <div class="item tabs tabs-secondary tabs-icon-left">
-          <button class="button button-block schedule-btn button-dark" style="margin: 0px" ng-click="schedule()">Schedule Haircut</button>
+          <button class="button button-block schedule-btn button-dark" ng-click="schedule()" style="margin: 0px">Schedule Haircut</button>
+          <button class="button button-block button-assertive" ng-click="logout()">Sign Out</button>
         </div>
       </div>
     </div>
 
-    <!-- Second Barber -->
+<!-- Second Barber -->
 
     <div class="list card">
       <div class="item item-avatar" ng-click="toggle(2)">
@@ -53,7 +53,7 @@
         </div>
 
         <div class="item tabs tabs-secondary tabs-icon-left">
-          <button class="button button-block schedule-btn button-dark" style="margin: 0px" ng-click="schedule()">Schedule Haircut</button>
+          <button class="button button-block schedule-btn button-dark" ng-click="schedule()" style="margin: 0px">Schedule Haircut</button>
         </div>
       </div>
     </div>

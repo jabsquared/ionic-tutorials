@@ -1,5 +1,12 @@
 <ion-view name="schedule-view">
   <ion-content class="padding">
-    <flex-calendar options="options" events="events"></flex-calendar>
+    <flex-calendar options="options" events="events" style="padding-top: 2em"></flex-calendar>
+    <button class="button button-block button-assertive" ng-click="submitData()">Submit Data</button>
+    <button class="button button-block button-assertive" ng-click="logout()">Sign Out</button>
+    <div class="" ng-repeat="data in remoteDate">
+      <h4>
+        {{data._data.time}}
+      </h4>
+    </div>
   </ion-content>
 </ion-view>
