@@ -1,9 +1,9 @@
 var app = angular.module('starter', ['ionic', 'flexcalendar', 'pascalprecht.translate']);
 
 //instanciate databases
-var localDB = new PouchDB("todos");
+var localDB = new PouchDB("appointments");
 
-var remoteDB = new PouchDB('https://itchentleverturearywhers:U7vFQNN2joOhU03Mw0iUx3SN @af48ada6-78db-4210-a80d-86619c82407e-bluemix.cloudant.com/my_sample_db', {
+var remoteDB = new PouchDB('https://itchentleverturearywhers:U7vFQNN2joOhU03Mw0iUx3SN @af48ada6-78db-4210-a80d-86619c82407e-bluemix.cloudant.com/appointments', {
   auth: {
     username: 'itchentleverturearywhers',
     password: 'U7vFQNN2joOhU03Mw0iUx3SN'
@@ -78,49 +78,27 @@ app.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
    FRIDAY: 'Friday',
    SATURDAY: 'Saturday'
  });
- $translateProvider.translations('fr', {
-     JANUARY: 'Janvier',
-     FEBRUARY: 'Févier',
-     MARCH: 'Mars',
-     APRIL: 'Avril',
-     MAI: 'Mai',
-     JUNE: 'Juin',
-     JULY: 'Juillet',
-     AUGUST: 'Août',
-     SEPTEMBER: 'Septembre',
-     OCTOBER: 'Octobre',
-     NOVEMBER: 'Novembre',
-     DECEMBER: 'Décembre',
-
-     SUNDAY: 'Dimanche',
-     MONDAY: 'Lundi',
-     TUESDAY: 'Mardi',
-     WEDNESDAY: 'Mercredi',
-     THURSDAY: 'Jeudi',
-     FRIDAY: 'Vendredi',
-     SATURDAY: 'Samedi'
- });
- $translateProvider.translations('pt', {
-     JANUARY: 'Janeiro',
-     FEBRUARY: 'Fevereiro',
-     MARCH: 'Março',
+ $translateProvider.translations('span', {
+     JANUARY: 'Enero',
+     FEBRUARY: 'Febrero',
+     MARCH: 'Marzo',
      APRIL: 'Abril',
-     MAI: 'Maio',
-     JUNE: 'Junho',
-     JULY: 'Julho',
+     MAI: 'Mayo',
+     JUNE: 'Junio',
+     JULY: 'Julio',
      AUGUST: 'Agosto',
-     SEPTEMBER: 'Setembro',
-     OCTOBER: 'Outubro',
-     NOVEMBER: 'Novembro',
-     DECEMBER: 'Dezembro',
+     SEPTEMBER: 'Septiembre',
+     OCTOBER: 'Octubre',
+     NOVEMBER: 'Noviembre',
+     DECEMBER: 'Diciembre',
 
-     SUNDAY: 'Domingo',
-     MONDAY: 'Segunda',
-     TUESDAY: 'Terça',
-     WEDNESDAY: 'Quarta',
-     THURSDAY: 'Quinta',
-     FRIDAY: 'Sexta',
-     SATURDAY: 'Sábado'
+     SUNDAY: 'domingo',
+     MONDAY: 'lunes',
+     TUESDAY: 'martes',
+     WEDNESDAY: 'miércoles',
+     THURSDAY: 'jueves',
+     FRIDAY: 'viernes',
+     SATURDAY: 'sábado'
  });
  $translateProvider.preferredLanguage('en');
  $translateProvider.useSanitizeValueStrategy('escape');
