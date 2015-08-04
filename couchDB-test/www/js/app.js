@@ -17,12 +17,9 @@ var remoteBarberDB = new PouchDB('https://itchentleverturearywhers:U7vFQNN2joOhU
   }
 });
 
-var remoteUsersDB = new PouchDB('https://itchentleverturearywhers:U7vFQNN2joOhU03Mw0iUx3SN @af48ada6-78db-4210-a80d-86619c82407e-bluemix.cloudant.com/_users', {
-  auth: {
-    username: 'itchentleverturearywhers',
-    password: 'U7vFQNN2joOhU03Mw0iUx3SN'
-  }
-});
+//Local user database
+var localUserDB = new PouchDB("users");
+
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

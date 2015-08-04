@@ -1,37 +1,17 @@
-app.controller("LoginCtrl", function($scope, $state, userData) {
+app.controller("LoginCtrl", function($scope, $state, $rootScope, userListener) {
   //Feilds
   $scope.data = {};
 
-  //Temporary User data
-  $scope.data.name = "Bogdan Pshonyak";
-  $scope.data.email = "bpshonyak@live.com";
-  $scope.data.uid = "jfft54rT#$RQWFg5";
+  // if ($rootScope !== null){
+  //   $state.go('account');
+  // }
 
   //Functions
   $scope.login = function() {
-    // remoteUsersDB.login($scope.data.username, $scope.data.password, function(err, response) {
-    //   if (err) {
-    //     if (err.name === 'unauthorized') {
-    //       console.log('name or password incorrect');
-    //     } else {
-    //       console.log('cosmic rays, a meteor, etc.');
-    //     }
-    //   } else {
-    //     userData.setUser($scope.data);
-    //     $state.go('account');
-    //   }
-    // });
-    remoteUsersDB.getUser('test', function(err, response) {
-      if (err) {
-        if (err.name === 'not_found') {
-          console.log(err);
-        } else {
-          console.log(err);
-        }
-      } else {
-        console.log(response);
-      }
-    });
+    localUserDB.post({
+      name: $scope.data.name,
+      phone: $scope.data.phone
+    })
   }
   $scope.fbLogin = function() {
     // login user with facebook account
@@ -39,6 +19,17 @@ app.controller("LoginCtrl", function($scope, $state, userData) {
   $scope.signup = function() {
     $state.go('signup');
   }
+
+  //Event Listeners
+  $scope.$on('add', function(event, user_info) {
+    $rootScope.user = user_info;
+    $state.go('account');
+  });
+
+  $scope.$on('delete', function(event, id) {
+    
+  });
+
 });
 
 app.controller("SignupCtrl", function($scope, $state) {
@@ -73,10 +64,10 @@ app.controller("SignupCtrl", function($scope, $state) {
 
 });
 
-app.controller("AccountCtrl", function($scope, $state, userData, barberListener) {
+app.controller("AccountCtrl", function($scope, $rootScope, $state, barberListener) {
 
   //Feilds
-  $scope.user = userData.getUser();
+  $scope.user = $rootScope.user;
   $scope.barbers = [];
   $scope.drop = false;
   $scope.drop2 = false;
@@ -94,6 +85,7 @@ app.controller("AccountCtrl", function($scope, $state, userData, barberListener)
     }
 
     $scope.logout = function() {
+      $rootScope.user = {};
       $state.go('login');
     }
   }

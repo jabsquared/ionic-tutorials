@@ -46,23 +46,47 @@ app.factory('barberListener', function($rootScope) {
     return true;
 });
 
-app.service('userData', function () {
-        var user = {
-            uid:          '',
-            full_name:    '',
-            email:        '',
-            profile_img:  ''
-        }
+app.factory('userListener', function($rootScope) {
 
-        return {
-            getUser: function () {
-                return user;
-            },
-            setUser: function(data) {
-                user.uid          = data.uid;
-                user.full_name    = data.name;
-                user.email        = data.email        || '';
-                user.profile_img  = data.profile_img  || '';
+    localUserDB.changes({
+        continuous: true,
+        onChange: function(change) {
+            if (!change.deleted) {
+                $rootScope.$apply(function() {
+                    localUserDB.get(change.id, function(err, doc) {
+                        $rootScope.$apply(function() {
+                            if (err) console.log(err);
+                            $rootScope.$broadcast('add', doc);
+                        })
+                    });
+                })
+            } else {
+                $rootScope.$apply(function() {
+                    $rootScope.$broadcast('delete', change.id);
+                });
             }
-        };
+        }
+    });
+    return true;
 });
+
+// app.service('userData', function () {
+//         var user = {
+//             uid:          '',
+//             full_name:    '',
+//             email:        '',
+//             profile_img:  ''
+//         }
+//
+//         return {
+//             getUser: function () {
+//                 return user;
+//             },
+//             setUser: function(data) {
+//                 user.uid          = data.uid;
+//                 user.full_name    = data.name;
+//                 user.email        = data.email        || '';
+//                 user.profile_img  = data.profile_img  || '';
+//             }
+//         };
+// });
