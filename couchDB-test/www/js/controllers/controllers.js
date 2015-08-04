@@ -1,34 +1,40 @@
-app.controller("LoginCtrl", function($scope, $state, $rootScope, userListener) {
+app.controller("LoginCtrl", function($scope, $state, $rootScope, userData) {
   //Feilds
   $scope.data = {};
 
-  // if ($rootScope !== null){
-  //   $state.go('account');
-  // }
+  localUserDB.get('app_user').then(function(doc) {
+    $state.go('account');
+  }).catch(function(err) {
+    console.log(err);
+  });
 
   //Functions
   $scope.login = function() {
-    localUserDB.post({
+    localUserDB.put({
+      _id: "app_user",
       name: $scope.data.name,
       phone: $scope.data.phone
-    })
+    }).then(function(response) {
+      $state.go('account');
+    }).catch(function(err) {
+      console.log(err);
+    });
   }
   $scope.fbLogin = function() {
-    // login user with facebook account
+
   }
   $scope.signup = function() {
     $state.go('signup');
   }
 
   //Event Listeners
-  $scope.$on('add', function(event, user_info) {
-    $rootScope.user = user_info;
-    $state.go('account');
-  });
-
-  $scope.$on('delete', function(event, id) {
-    
-  });
+  // $scope.$on('add', function(event, user_info) {
+  //
+  // });
+  //
+  // $scope.$on('delete', function(event, id) {
+  //
+  // });
 
 });
 
@@ -67,17 +73,20 @@ app.controller("SignupCtrl", function($scope, $state) {
 app.controller("AccountCtrl", function($scope, $rootScope, $state, barberListener) {
 
   //Feilds
-  $scope.user = $rootScope.user;
   $scope.barbers = [];
   $scope.drop = false;
   $scope.drop2 = false;
+
+  localUserDB.get('app_user').then(function(doc) {
+    $scope.user = doc;
+  }).catch(function(err) {
+    console.log(err);
+  });
 
   //Functions
   $scope.toggle = function(num) {
     if (num === 1) {
       $scope.drop = !$scope.drop;
-    } else if (num === 2) {
-      $scope.drop2 = !$scope.drop2;
     }
 
     $scope.schedule = function() {

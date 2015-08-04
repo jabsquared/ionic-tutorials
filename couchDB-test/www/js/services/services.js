@@ -56,7 +56,8 @@ app.factory('userListener', function($rootScope) {
                     localUserDB.get(change.id, function(err, doc) {
                         $rootScope.$apply(function() {
                             if (err) console.log(err);
-                            $rootScope.$broadcast('add', doc);
+                            // $rootScope.$broadcast('add', doc);
+                               $rootScope.user = doc;
                         })
                     });
                 })
@@ -70,23 +71,19 @@ app.factory('userListener', function($rootScope) {
     return true;
 });
 
-// app.service('userData', function () {
-//         var user = {
-//             uid:          '',
-//             full_name:    '',
-//             email:        '',
-//             profile_img:  ''
-//         }
-//
-//         return {
-//             getUser: function () {
-//                 return user;
-//             },
-//             setUser: function(data) {
-//                 user.uid          = data.uid;
-//                 user.full_name    = data.name;
-//                 user.email        = data.email        || '';
-//                 user.profile_img  = data.profile_img  || '';
-//             }
-//         };
-// });
+app.service('userData', function () {
+        var user = {
+            name:    '',
+            email:   '',
+        }
+
+        return {
+            getUser: function () {
+                return user;
+            },
+            setUser: function(data) {
+                user.name    = data.name;
+                user.email   = data.email;
+            }
+        };
+});
