@@ -103,7 +103,7 @@ app.controller('SignupCtrl', function($scope, $state, $rootScope) {
 
 })
 
-app.controller('ScheduleCtrl', function($scope, $state, $rootScope, userData) {
+app.controller('ScheduleCtrl', function($scope, $state, $rootScope, $ionicPopup,userData) {
 
   var user = userData.getUser();
 
@@ -279,6 +279,10 @@ app.controller('ScheduleCtrl', function($scope, $state, $rootScope, userData) {
     foo: 'bar',
     date: new Date(2015, 7, 11)
   }];
+
+  $scope.schedule = function () {
+    
+  }
 
   // Submiting Data -----------------------------------------------------------
 
