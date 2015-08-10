@@ -103,9 +103,23 @@ app.controller('SignupCtrl', function($scope, $state, $rootScope) {
 
 })
 
-app.controller('ScheduleCtrl', function($scope, $state, $rootScope, $ionicPopup,userData) {
+app.controller('ScheduleCtrl', function($scope, $state, $rootScope, $ionicPopup, userData, appointmentData) {
 
   var user = userData.getUser();
+  $scope.data = {}
+
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth(); //January is 0!
+  var yyyy = today.getFullYear();
+  if (dd < 10) {
+    dd = '0' + dd
+  }
+  if (mm < 10) {
+    mm = '0' + mm
+  }
+
+  $scope.appointments = appointmentData.getApts(new Date(yyyy, mm, dd));
 
   $scope.logout = function() {
     $state.go('login');
@@ -113,145 +127,8 @@ app.controller('ScheduleCtrl', function($scope, $state, $rootScope, $ionicPopup,
 
   // Flex Calendar Shit -------------------------------------------------------
 
-  $scope.appointments = [
-    {
-        start:  '9:00 am',
-        end:    '9:30 am',
-        client: 'Bogdan',
-        barder: 'Gabino',
-        taken:  true
-    },
-    {
-        start:  '9:30 am',
-        end:    '10:00 am',
-        client: '',
-        barder: '',
-        taken:  false
-    },
-    {
-        start:  '10:00 am',
-        end:    '10:30 am',
-        client: 'Brain',
-        barder: 'Antonio',
-        taken:  true
-    },
-    {
-        start:  '10:30 am',
-        end:    '11:00 am',
-        client: 'Jim',
-        barder: 'Gabino',
-        taken:  true
-    },
-    {
-        start:  '11:00 am',
-        end:    '11:30 am',
-        client: '',
-        barder: '',
-        taken:  false
-    },
-    {
-        start:  '11:30 am',
-        end:    '12:00 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  true
-    },
-    {
-        start:  '12:00 pm',
-        end:    '12:30 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  true
-    },
-    {
-        start:  '12:30 pm',
-        end:    '1:00 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  false
-    },
-    {
-        start:  '1:00 pm',
-        end:    '1:30 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  true
-    },
-    {
-        start:  '1:30 pm',
-        end:    '2:00 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  false
-    }
-    ,
-    {
-        start:  '2:00 pm',
-        end:    '2:30 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  false
-    },
-    {
-        start:  '2:30 pm',
-        end:    '3:00 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  false
-    },
-    {
-        start:  '3:00 pm',
-        end:    '3:30 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  false
-    },
-    {
-        start:  '3:30 pm',
-        end:    '4:30 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  true
-    },
-    {
-        start:  '4:30 pm',
-        end:    '5:00 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  true
-    },
-    {
-        start:  '5:00 pm',
-        end:    '5:30 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  false
-    },
-    {
-        start:  '5:30 pm',
-        end:    '6:00 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  false
-    },
-    {
-        start:  '6:00 pm',
-        end:    '6:30 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  false
-    },
-    {
-        start:  '6:30 pm',
-        end:    '7:00 pm',
-        client: 'Louis',
-        barder: 'Matt',
-        taken:  false
-    }
-  ]
-
   $scope.options = {
-    defaultDate: new Date(2015, 07, 10),
+    defaultDate: new Date(yyyy, mm, dd),
     minDate: new Date(2015, 06, 12),
     maxDate: new Date(2015, 12, 31),
     disabledDates: [
@@ -261,11 +138,16 @@ app.controller('ScheduleCtrl', function($scope, $state, $rootScope, $ionicPopup,
     ],
     dayNamesLength: 3, // 1 for "M", 2 for "Mo", 3 for "Mon"; 9 will show full day names. Default is 1.
     mondayIsFirstDay: true, //set monday as first day of week. Default is false
-    eventClick: function(date) {
-      console.log(date);
+    eventClick: function(date_obj) {
+      console.log(date_obj);
+      $scope.data.date = date_obj.date || $scope.options.defaultDate;
+      $scope.appointments = appointmentData.getApts(date_obj.date);
+      // console.log($scope.appointments);
     },
-    dateClick: function(date) {
-      console.log(date);
+    dateClick: function(date_obj) {
+      console.log(date_obj);
+      $scope.data.date = date_obj.date || $scope.options.defaultDate;
+      $scope.appointments = appointmentData.getApts(date_obj.date);
     },
     changeMonth: function(month, year) {
       console.log(month, year);
@@ -280,8 +162,35 @@ app.controller('ScheduleCtrl', function($scope, $state, $rootScope, $ionicPopup,
     date: new Date(2015, 7, 11)
   }];
 
-  $scope.schedule = function () {
-    
+  $scope.schedule = function() {
+    // An elaborate, custom popup
+    var myPopup = $ionicPopup.show({
+      template: '<input type="text" ng-model="data.name" placeholder="Full Name"> <br/> <input type="tel" ng-model="data.phone" placeholder="phone number">',
+      title: 'Choose new date and time.',
+      scope: $scope,
+      buttons: [{
+        text: 'Cancel',
+        onTap: function(e) {
+          return 'cancel button'
+        }
+      }, {
+        text: '<b>Confirm</b>',
+        type: 'button-assertive',
+        onTap: function(e) {
+          //  alert($scope.newDate.date);
+          if (!$scope.data.name || !$scope.data.phone) {
+            //don't allow the user to close unless he enters wifi password
+            e.preventDefault();
+          } else {
+            return 'submit';
+          }
+        }
+      }, ]
+    });
+    myPopup.then(function(res) {
+      //  alert($scope.newDate.date);
+      console.log(res);
+    });
   }
 
   // Submiting Data -----------------------------------------------------------
