@@ -6,23 +6,23 @@ app.controller('LoginCtrl', function($scope, $state, $rootScope, userData) {
   }
 
   $scope.login = function() {
-
-    $rootScope.dataClient.login($scope.data.email, $scope.data.password, function(error, response) {
-      if (error) {
-        //error — could not log user in
-        console.log('Could not login.');
-        console.log(error);
-      } else {
-        //success — user has been logged in
-        console.log(response);
-        $scope.data.uid = response.access_token;
-        $scope.data.picture = response.user.picture;
-        $scope.data.name = response.user.name;
-        console.log($scope.data);
-        userData.setUser($scope.data);
-        $state.go('account');
-      }
-    });
+    $state.go('schedule');
+    // $rootScope.dataClient.login($scope.data.email, $scope.data.password, function(error, response) {
+    //   if (error) {
+    //     //error — could not log user in
+    //     console.log('Could not login.');
+    //     console.log(error);
+    //   } else {
+    //     //success — user has been logged in
+    //     console.log(response);
+    //     $scope.data.uid = response.access_token;
+    //     $scope.data.picture = response.user.picture;
+    //     $scope.data.name = response.user.name;
+    //     console.log($scope.data);
+    //     userData.setUser($scope.data);
+    //     $state.go('account');
+    //   }
+    // });
   }
 
   $scope.signup = function() {
@@ -111,6 +111,177 @@ app.controller('ScheduleCtrl', function($scope, $state, $rootScope, userData) {
     $state.go('login');
   }
 
+  // Flex Calendar Shit -------------------------------------------------------
+
+  $scope.appointments = [
+    {
+        start:  '9:00 am',
+        end:    '9:30 am',
+        client: 'Bogdan',
+        barder: 'Gabino',
+        taken:  true
+    },
+    {
+        start:  '9:30 am',
+        end:    '10:00 am',
+        client: '',
+        barder: '',
+        taken:  false
+    },
+    {
+        start:  '10:00 am',
+        end:    '10:30 am',
+        client: 'Brain',
+        barder: 'Antonio',
+        taken:  true
+    },
+    {
+        start:  '10:30 am',
+        end:    '11:00 am',
+        client: 'Jim',
+        barder: 'Gabino',
+        taken:  true
+    },
+    {
+        start:  '11:00 am',
+        end:    '11:30 am',
+        client: '',
+        barder: '',
+        taken:  false
+    },
+    {
+        start:  '11:30 am',
+        end:    '12:00 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  true
+    },
+    {
+        start:  '12:00 pm',
+        end:    '12:30 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  true
+    },
+    {
+        start:  '12:30 pm',
+        end:    '1:00 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  false
+    },
+    {
+        start:  '1:00 pm',
+        end:    '1:30 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  true
+    },
+    {
+        start:  '1:30 pm',
+        end:    '2:00 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  false
+    }
+    ,
+    {
+        start:  '2:00 pm',
+        end:    '2:30 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  false
+    },
+    {
+        start:  '2:30 pm',
+        end:    '3:00 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  false
+    },
+    {
+        start:  '3:00 pm',
+        end:    '3:30 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  false
+    },
+    {
+        start:  '3:30 pm',
+        end:    '4:30 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  true
+    },
+    {
+        start:  '4:30 pm',
+        end:    '5:00 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  true
+    },
+    {
+        start:  '5:00 pm',
+        end:    '5:30 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  false
+    },
+    {
+        start:  '5:30 pm',
+        end:    '6:00 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  false
+    },
+    {
+        start:  '6:00 pm',
+        end:    '6:30 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  false
+    },
+    {
+        start:  '6:30 pm',
+        end:    '7:00 pm',
+        client: 'Louis',
+        barder: 'Matt',
+        taken:  false
+    }
+  ]
+
+  $scope.options = {
+    defaultDate: new Date(2015, 07, 10),
+    minDate: new Date(2015, 06, 12),
+    maxDate: new Date(2015, 12, 31),
+    disabledDates: [
+      new Date(2015, 07, 24),
+      new Date(2015, 07, 25),
+      new Date(2015, 07, 26),
+    ],
+    dayNamesLength: 3, // 1 for "M", 2 for "Mo", 3 for "Mon"; 9 will show full day names. Default is 1.
+    mondayIsFirstDay: true, //set monday as first day of week. Default is false
+    eventClick: function(date) {
+      console.log(date);
+    },
+    dateClick: function(date) {
+      console.log(date);
+    },
+    changeMonth: function(month, year) {
+      console.log(month, year);
+    },
+  };
+
+  $scope.events = [{
+    foo: 'bar',
+    date: new Date(2015, 7, 10)
+  }, {
+    foo: 'bar',
+    date: new Date(2015, 7, 11)
+  }];
+
+  // Submiting Data -----------------------------------------------------------
+
   $scope.submitData = function() {
     //Set the properties of the entity
     console.log('entered submit function');
@@ -135,39 +306,7 @@ app.controller('ScheduleCtrl', function($scope, $state, $rootScope, userData) {
     });
   }
 
-  // Flex Calendar Shit
-
-  $scope.options = {
-    defaultDate: new Date(2015, 06, 26),
-    minDate: new Date(2015, 06, 12),
-    maxDate: new Date(2015, 12, 31),
-    disabledDates: [
-      new Date(2015, 06, 30),
-      new Date(2015, 07, 25),
-      new Date(2015, 08, 13),
-    ],
-    dayNamesLength: 1, // 1 for "M", 2 for "Mo", 3 for "Mon"; 9 will show full day names. Default is 1.
-    mondayIsFirstDay: true, //set monday as first day of week. Default is false
-    eventClick: function(date) {
-      console.log(date);
-    },
-    dateClick: function(date) {
-      console.log(date);
-    },
-    changeMonth: function(month, year) {
-      console.log(month, year);
-    },
-  };
-
-  $scope.events = [{
-    foo: 'bar',
-    date: new Date(2015, 11, 3)
-  }, {
-    foo: 'bar',
-    date: new Date(2015, 6, 4)
-  }];
-
-  // Retriving Data -----------------------------------------
+  // Retriving Data -----------------------------------------------------------
 
   $scope.remoteDate = {};
 

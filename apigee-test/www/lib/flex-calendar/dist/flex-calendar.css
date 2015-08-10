@@ -31,7 +31,7 @@
       -ms-flex-align: start;
           align-items: flex-start;
 
-  background-color: #ffb835;
+  background-color: #000000;
 }
 
 .flex-calendar .month .arrow,
@@ -90,7 +90,7 @@
 }
 
 .flex-calendar .week {
-  background-color: #faac1c;
+  background-color: #444444;
 }
 
 .flex-calendar .week .day,
@@ -124,7 +124,7 @@
 
 .flex-calendar .days .day.today,
 .flex-calendar .days .day.disabled.today{
-  color: #FFB835;
+  color: #EF473A;
   border: 1px solid;
 }
 
@@ -157,7 +157,7 @@
 .flex-calendar .days .day.selected .number {
   width: 40px;
   height: 40px;
-  background-color: #FFB835;
+  background-color: #EF473A;
   border-radius: 100%;
   line-height: 40px;
   color: #FFFFFF;
