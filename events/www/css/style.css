@@ -1,19 +1,14 @@
-/* Empty. Add your own CSS if you like */
-
 /* Header */
-
-ion-header-bar {
-  height: 80px;
-}
 
 #logo-img {
   clear:both;
   width: fixed;
-  max-width: 180px;
-  height: 40px;
-  margin-top: 3em;
+  /*max-width: 20px;*/
+  height: 27px;
+  margin-top: 8px;
   margin: 0 auto;
-  padding-bottom: 0.2em;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 p {
@@ -35,7 +30,7 @@ p {
   margin-right: 0.3em;
 }
 
-.ion-ios-alarm-outline{
+.alarm-slider{
   font-size: 2.4em;
   margin: 0 auto;
   font-weight: 800;
@@ -58,8 +53,10 @@ p {
 }*/
 
 .event-time {
-  width: 2em;
+  width: 80px;
   border-radius: 0px;
+  display: block;
+  float: left;
 }
 
 .event-time i {

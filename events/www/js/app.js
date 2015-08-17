@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('starter', ['ionic', 'ngCordova']);
+var app = angular.module('starter', ['ionic', 'ngCordova', 'leaflet-directive']);
 
 app.run(function($ionicPlatform, $rootScope, $timeout) {
   $ionicPlatform.ready(function() {
@@ -46,6 +46,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/event/:id',
     templateUrl: 'templates/event.html',
     controller: 'EventCtrl'
+  })
+
+  .state('maps', {
+    url: '/maps',
+    templateUrl: 'templates/maps.html',
+    controller: 'MapsCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback

@@ -1,16 +1,18 @@
-<ion-view name="events-view">
+<ion-view name="events-view" title=''>
   <ion-header-bar class="bar-light">
-    <img id="logo-img" src="./img/logo.png" alt="Univision" href="#/schedule" />
+    <button class="button button-icon icon ion-navicon"></button>
+    <img alt="Univision" href="#/schedule" id="logo-img" src="./img/logo.png"/>
+    <button class="button button-icon icon ion-map" ng-click="goToMaps()" ></button>
   </ion-header-bar>
   <ion-content>
-    <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
-      <ion-item ng-repeat="event in events" class="item item-icon-left item-icon-right">
-        <div class="event-body" ng-style="{'height' : (30 + 2 * event.dur)+'px'}">
+    <ion-list can-swipe="listCanSwipe" show-delete="shouldShowDelete">
+      <ion-item class="item item-icon-left item-icon-right" ng-repeat="event in events">
+        <div class="event-body" ng-style="{'height' : (30 + 2 * (Math.floor((event.end - event.start)/1000/60)))+'px'}">
 
           <i class="icon button button-positive badge event-time" ng-click="schedule({{event}})">
             <p>
               {{event.start | date:'h:mm'}}
-            <br>
+              <br>
               {{event.start | date:'a' | lowercase}}
             </p>
           </i>
@@ -20,15 +22,16 @@
               {{event.name}}
               <span class="item-note event-desc">
                 <p>
-                  {{event.desc | limitTo : 135 : 0}} {{event.desc.length > 135 ? '...' : ''}}
+                  {{event.desc | limitTo : 135 : 0}}
+                  {{event.desc.length > 135 ? '...' : ''}}
                 </p>
               </span>
             </span>
           </a>
-          <!-- <i class="event-icon icon ion-music-note"></i> -->
+<!-- <i class="event-icon icon ion-music-note"></i> -->
 
           <ion-option-button class="button-positive item-icon-right" ng-click="schedule({{event}})">
-            <i class="ion-ios-alarm-outline"></i>
+            <i class="ion-android-alarm-clock alarm-slider"></i>
           </ion-option-button>
 
         </div>

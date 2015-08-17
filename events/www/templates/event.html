@@ -1,7 +1,8 @@
-<ion-view name="event">
+<ion-view name="event" title=''>
   <ion-header-bar class="bar-light">
-    <a href="#/schedule" class="button icon ion-arrow-left-b"></a>
-    <img id="logo-img" src="./img/logo.png" alt="Univision" href="#/schedule" />
+    <button class="button button-icon icon ion-arrow-left-c" ng-click="goToSchedule()"></button>
+    <img alt="Univision" href="#/schedule" id="logo-img" src="./img/logo.png"/>
+    <button class="button button-icon icon ion-android-alarm-clock" ng-click="schedule({{event}})"></button>
   </ion-header-bar>
   <ion-content>
     <h2 class="event-title">{{event.name}}</h2>
