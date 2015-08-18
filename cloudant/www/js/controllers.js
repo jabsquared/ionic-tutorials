@@ -1,4 +1,10 @@
-var db = new PouchDB('https://7e95ca9e-57fc-4d13-9202-bf4c5dff28f5-bluemix.cloudant.com/clientdb/_all_docs');
+
+var db = new PouchDB('https://7e95ca9e-57fc-4d13-9202-bf4c5dff28f5-bluemix.cloudant.com/barberqueues', {
+  auth: {
+    username: '',
+    password: ''
+});
+  }
 
 var local = new PouchDB('local_db');
 local.sync(db, {
@@ -52,7 +58,6 @@ app.controller('AccountCtrl', function($scope, $state, userData) {
     $scope.logout = function() {
       $state.go('login');
     }
-
   }
 })
 
@@ -64,7 +69,11 @@ app.controller('SignupCtrl', function($scope, $state, $rootScope) {
 
   $scope.signup = function() {
 
-    db.signup($scope.user.email, $scope.user.password, function(err, response) {
+    db.signup($scope.user.email, $scope.user.password, {
+      metadata: {
+        fullname: $scope.user.name,
+      }
+    }, function(err, response) {
       if (err) {
         if (err.name === 'conflict') {
           // "batman" already exists, choose another username
@@ -74,6 +83,8 @@ app.controller('SignupCtrl', function($scope, $state, $rootScope) {
           console.log(err);
           // HTTP error, cosmic rays, etc.
         }
+      } else {
+        $scope.cancel();
       }
     });
   }
