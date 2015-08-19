@@ -1,13 +1,14 @@
 <ion-view name="maps" title=''>
-  <ion-header-bar class="bar-light">
-    <button class="button button-icon icon ion-arrow-left-c" ng-click="goToSchedule()"></button>
-    <img alt="Univision" href="#/schedule" id="logo-img" src="./img/logo.png"/>
-<!-- <button class="button button-icon icon ion-android-alarm-clock"></button> -->
-  </ion-header-bar>
+  <ion-nav-bar class="bar-light" align-title="center">
+      <ion-nav-back-button class="button icon-left button-clear" ng-click="goToSchedule()">
+          <i class="ion-chevron-left"></i>
+      </ion-nav-back-button>
+      <img alt="Univision" href="#/schedule" id="logo-img" src="./img/logo.png"/>
+  </ion-nav-bar>
   <ion-content>
 <!-- <a href="comgooglemaps://?center=40.765819,-73.975866&zoom=14&views=traffic" target="_blank">Click here for map</a> -->
     <leaflet center="auburn" event-broadcast="events" height="480px" markers="markers" width="100%"></leaflet>
-    
+
 
 </ion-content>
 </ion-view>
