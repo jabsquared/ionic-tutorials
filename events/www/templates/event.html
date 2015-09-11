@@ -1,12 +1,14 @@
 <ion-view name="event" title=''>
-  <ion-nav-bar class="bar-light" align-title="center">
-      <ion-nav-back-button class="button icon-left button-clear" ng-click="goToSchedule()">
-          <i class="ion-chevron-left"></i>
-      </ion-nav-back-button>
+  <ion-nav-bar align-title="center" class="bar-light">
+    <ion-nav-back-button class="button icon-left button-clear" ng-click="goToSchedule()">
+      <i class="ion-chevron-left"></i>
+    </ion-nav-back-button>
+    <ion-nav-title>
       <img alt="Univision" href="#/schedule" id="logo-img" src="./img/logo.png"/>
-      <ion-nav-buttons side="right">
-          <button class="button button-icon icon ion-android-alarm-clock" ng-click="schedule({{event}})"></button>
-        </ion-nav-buttons>
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+      <button class="button button-icon icon ion-android-alarm-clock" ng-click="schedule({{event}})"></button>
+    </ion-nav-buttons>
   </ion-nav-bar>
   <ion-content>
     <h2 class="event-title">{{event.name}}</h2>
