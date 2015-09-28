@@ -1,5 +1,5 @@
 app.controller('LoginCtrl', function($scope, $state, fbUserData, Auth) {
-  $scope.data = {}
+  $scope.data = {};
 
   $scope.fbLogin = function() {
     Auth.$authWithOAuthPopup("facebook", {
@@ -16,7 +16,7 @@ app.controller('LoginCtrl', function($scope, $state, fbUserData, Auth) {
         console.log(error);
       }
     });
-  }
+  };
 
   $scope.login = function() {
     Auth.$authWithPassword({
@@ -29,11 +29,11 @@ app.controller('LoginCtrl', function($scope, $state, fbUserData, Auth) {
         console.log("Authenticated successfully with payload:", authData);
       }
     });
-  }
+  };
 
   $scope.signup = function() {
     $state.go('signup');
-  }
+  };
 
   Auth.$onAuth(function(authData) {
     if (authData === null) {
@@ -61,7 +61,7 @@ app.controller('LoginCtrl', function($scope, $state, fbUserData, Auth) {
     $scope.authData = authData; // This will display the user's name in our view
   });
 
-})
+});
 
 app.controller('AccountCtrl', function($scope, $state, fbUserData) {
   $scope.user = fbUserData.getUser();
@@ -69,8 +69,8 @@ app.controller('AccountCtrl', function($scope, $state, fbUserData) {
   $scope.logout = function() {
     ref.unauth();
     $state.go('login');
-  }
-})
+  };
+});
 
 app.controller('SignupCtrl', function($scope, $state) {
   $scope.data = {};
@@ -98,10 +98,10 @@ app.controller('SignupCtrl', function($scope, $state) {
     } else {
       console.log('incorrect credentials');
     }
-  }
+  };
 
   $scope.cancel = function() {
     $state.go('login');
-  }
+  };
 
 });
